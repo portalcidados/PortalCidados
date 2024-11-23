@@ -1,0 +1,690 @@
+body {
+    background:#fff;
+}
+
+a, .la-ball-triangle-path {
+    color:#C00026;
+}
+
+a:hover, #header.nav-solid nav a:hover {
+    color:#C00026;
+}
+
+.icon i {
+    color:#C00026;
+}
+
+#banner .section-heading:before, .testimonial.classic footer:before {
+    background: #C00026;
+}
+
+.pricing-block-content:hover {
+    border-color:#C00026;
+}
+
+
+/*------------------------------------------------------------------------------------------*/
+/* 2. Navigation */
+/*------------------------------------------------------------------------------------------*/
+
+
+/* Transparent Navigation Color on a Banner */
+
+#header nav a, #header i {
+    color:#414042;
+}
+
+#header nav a:hover, #header i:hover {
+    color:#C00026;
+}
+
+
+/* Navigation Colors when the Navigation is sticky and solid */ 
+
+#header.nav-solid, #header.nav-solid a, #header.nav-solid i, #nav-mobile ul li a {
+    color:#333;
+}
+
+
+/* Navigation Active State */
+
+#header.nav-solid .active {
+    color: #C00026;
+    border-color: #C00026;
+}    
+
+
+
+/*------------------------------------------------------------------------------------------*/
+/* 3. Primary and Secondary Colors */
+/*------------------------------------------------------------------------------------------*/
+
+
+/* Primary Background and Text Colors */
+
+.primary-color, .featured .pricing {
+    background-color:#C00026;
+}
+
+.primary-color, .primary-color .section-title, .primary-color .section-subtitle, .featured .pricing, .featured .pricing p {
+    color:#fff;    
+}
+
+.section-heading h2:after {
+    background:#C00026;
+    content:"";
+    display:block;
+    width:30px;
+    height:5px;
+    margin-top:30px;
+}
+
+.text-center .section-heading h2:after {
+    margin:30px auto 25px auto;
+}
+
+/* Primary Icon Colors */
+
+.primary-color .icon i, .primary-color i {
+    color:#fff;
+}
+
+
+/* Secondary Background and Text Colors */
+
+.secondary-color {
+    background-color:#f5f5f5;
+}
+
+
+/*------------------------------------------------------------------------------------------*/
+/* 4. Banner */
+/*------------------------------------------------------------------------------------------*/
+
+
+/* Banner Background and Text Colors */
+
+#banner {
+    background: url("../images/banner-images/af-composicao.svg") no-repeat center top;
+    background-size:cover;
+}
+
+
+/*------------------------------------------------------------------------------------------*/
+/* 5. Typography */
+/*------------------------------------------------------------------------------------------*/
+
+
+body {
+    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-size:15px;
+    font-weight:normal;
+    color:#414042;
+}
+
+/* Logo, if you are using Fonts as Logo and not image
+
+#logo h1 {
+    font-family:;
+    font-size:; 
+    font-weight:;
+    color:;
+}
+
+#logo h2 {
+    font-family:;
+    font-size:; 
+    font-weight:;
+    color:;
+}
+
+*/
+
+
+/* Banner Typography */
+
+#banner h1 {
+    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-size:62px;
+    line-height:60px;
+    font-weight:800;
+    color:#414042;
+}
+
+#banner h2 {
+    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-size:18px;
+    font-weight:300;
+    color:#414042;
+}
+
+
+/* Section Title and Subtitle */
+
+.section-title {
+    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-size: 34px; 
+    font-weight:700;
+    color:#414042;
+}
+
+.section-subtitle {
+    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-size: 16px;
+    font-weight:300;
+    color:#9c9c9c;
+}
+
+/* Testimonial */
+
+.testimonial q {
+    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-size: 17px; 
+    font-weight:300;
+}
+
+.testimonial.classic q, .testimonial.classic footer {
+    color:#414042;
+}
+
+
+/* Standard Headings h1-h6 */
+
+h1 {
+    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-size: 40px; 
+    font-weight:300;
+    color:#414042;
+}
+
+h2 {
+    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-size: 34px; 
+    font-weight:300;
+    color:#414042;
+}
+
+h3 {
+    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-size: 30px; 
+    font-weight:700;
+    color:#414042;
+}
+
+h4 {
+    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-size: 18px; 
+    font-weight:400;
+    color:#414042;
+}
+
+h5 {
+    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-size: 16px; 
+    font-weight:400;
+    color:#414042;
+}
+
+h6 {
+    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-size: 14px; 
+    font-weight:400;
+    color:#414042;
+}
+
+
+/*------------------------------------------------------------------------------------------*/
+/* 6. Buttons */
+/*------------------------------------------------------------------------------------------*/
+
+/* ----------Default Buttons---------- */
+
+
+/* Button Text */
+
+.button, input[type="submit"]  {
+    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-size:14px;
+    font-weight:bold;
+    color:#414042;
+}
+
+
+/* Button Color */
+
+.button, input[type="submit"] {
+    border-color:#414042;
+}
+
+
+/* Button Hover Color */
+
+.button:hover,  input[type="submit"]:hover {
+    border-color:#C00026;
+    color:#C00026;
+}
+
+
+/* ----------Banner Buttons---------- */
+
+
+/* Button Text */
+
+#banner .button {
+    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-size:16px;
+    color:#414042;
+}
+
+
+/* Button Color */
+
+#banner .button {
+    border-color:#414042;
+}
+
+
+/* Button Hover Color */
+
+#banner .button:hover {
+    color:#C00026;
+    border-color:#C00026;
+}
+
+
+/*------------------------------------------------------------------------------------------*/
+/* 7. Footer */
+/*------------------------------------------------------------------------------------------*/
+
+#landing-footer, #landing-footer p, #landing-footer a {
+    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-size:12px;
+    font-weight:normal;
+    color:#999;
+}
+
+/* Footer Icon Color */
+
+#landing-footer i {
+    color:#999;
+}
+
+
+
+
+#navigation-logo {
+    position: absolute;
+    top: 3px;
+}
+
+#logo {
+    font-family: 'Roboto Condensed';
+}
+
+.text {
+    position: absolute;
+    font-size: 2rem;
+    font-weight: 700; /* Usando peso 700 (negrito) da fonte Roboto Condensed */
+    transition: opacity 1s ease, transform 1s ease;
+    color: #C00026;
+}
+
+.text2 {
+    position: absolute;
+    font-size: 2rem;
+    font-weight: 700; /* Usando peso 700 (negrito) da fonte Roboto Condensed */
+    color: #333;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.visible {
+    opacity: 1;
+}
+
+#cidade, #cidade2 {
+    left: 100px;
+}
+
+#em, #em2 {
+    left: 200px;
+}
+
+#dados, #dados2 {
+    left: 250px;
+}
+
+#cidados, #cidados2 {
+    left: 160px;
+}
+
+#portal, #portal2 {
+    left: 75px;
+    background-image: url(icons/dados.svg);
+}
+
+#bg {
+    left: 40px;
+    top: 34px;
+    background-image: url(icons/dados.svg);
+    background-repeat: no-repeat;
+    background-size: 29px;
+    background-position-y: 6px;
+    width: 30px;
+    height: 30px;
+}
+
+#bg2 {
+    left: 40px;
+    top: 14px;
+    background-image: url(icons/dados.svg);
+    background-repeat: no-repeat;
+    background-size: 29px;
+    background-position-y: 6px;
+    width: 30px;
+    height: 30px;
+}
+
+.collide_to_left {
+    animation: collide_to_left 2s;
+}
+
+.collide_to_right {
+    animation: collide_to_right 2s;
+}
+
+.move {
+    animation: moveIn 2s;
+}
+
+@keyframes moveIn {
+    0% {
+        transform: translateX(-40px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes collide_to_left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-60px));
+    }
+}
+
+@keyframes transform3To2 {
+    0% {
+        position: absolute;
+        top: 0px;
+        right: 0.5%;
+        width: 7.5%;
+        height: 500px;
+        border: solid 1px #c000263f;
+        border-radius: 20px;
+        z-index: 0;
+        cursor: pointer;
+        list-style-type: none;
+    }
+    100% {
+        position: absolute;
+        top: 0px;
+        left: 7.5%;
+        width: 85%;
+        height: 500px;
+        border: solid 5px #c00026;
+        border-radius: 30px;
+        background-color: #ffffff;
+        z-index: 1;
+        list-style-type: none;
+    }
+}
+
+@keyframes transform1To2 {
+    0% {
+        position: absolute;
+        top: 0px;
+        left: 0.5%;
+        width: 7.5%;
+        height: 500px;
+        border: solid 1px #2a75c53f;
+        border-radius: 20px;
+        z-index: 0;
+        cursor: pointer;
+        list-style-type: none;
+    }
+    100% {
+        position: absolute;
+        top: 0px;
+        left: 7.5%;
+        width: 85%;
+        height: 500px;
+        border: solid 5px #c00026;
+        border-radius: 30px;
+        background-color: #ffffff;
+        z-index: 1;
+        list-style-type: none;
+    }
+}
+
+.story3_to_story2 {
+    animation: transform3To2 0.8s;
+}
+
+.story1_to_story2 {
+    animation: transform1To2 0.8s;
+}
+
+li.story_item.story_container_1 {
+    position: absolute;
+    top: 0px;
+    left: 0.5%;
+    width: 7.5%;
+    height: 500px;
+    border: solid 1px #2a75c53f;
+    border-radius: 20px;
+    z-index: 0;
+    cursor: pointer;
+    list-style-type: none;
+}
+
+li.story_item.story_container_1:hover {
+    box-shadow: 0px 0px 5px 3px #c00026;
+}
+
+li.story_item.story_container_2 {
+    position: absolute;
+    top: 0px;
+    left: 7.5%;
+    width: 85%;
+    height: 500px;
+    border: solid 5px #c00026;
+    border-radius: 30px;
+    background-color: #ffffff;
+    z-index: 1;
+    list-style-type: none;
+}
+
+li.story_item.story_container_3 {
+    position: absolute;
+    top: 0px;
+    right: 0.5%;
+    width: 7.5%;
+    height: 500px;
+    border: solid 1px #c000263f;
+    border-radius: 20px;
+    z-index: 0;
+    cursor: pointer;
+    list-style-type: none;
+}
+
+li.story_item.story_container_3:hover {
+    box-shadow: 0px 0px 5px 3px #C00026;
+}
+
+li.story_item.story_container_1 a img.story_card_image, li.story_item.story_container_3 a img.story_card_image {
+    display: none;
+}
+
+li.story_item.story_container_1 a div.story_card_content p.story_card_description, li.story_item.story_container_3 a div.story_card_content p.story_card_description {
+    display: none;
+}
+
+li.story_item.story_container_1 a div.story_card_graph, li.story_item.story_container_3 a div.story_card_graph {
+    display: none;
+}
+
+li.story_item.story_container_1 a div.story_card_subgraph, li.story_item.story_container_3 a div.story_card_subgraph {
+    display: none;
+}
+
+li.story_item.story_container_1 a div.story_card_content .story_card_header, li.story_item.story_container_3 a div.story_card_content .story_card_header {
+    position: absolute;
+    transform-origin: left;
+    transform: rotate(-90deg);
+    width: 500px;
+    bottom: 0px;
+    left: 45%;
+    color: #2a75c5c3;
+}
+
+li.story_item.story_container_2 a img.story_card_image {
+    position: absolute;
+    width: 500px;
+    height: auto;
+    bottom: 10px;
+    left: 20px;
+    opacity: 0.1;
+    max-width: none;
+}
+
+li.story_item.story_container_2 a div.story_card_graph {
+    position: absolute;
+    height: 100%;
+    left: 0%;
+    width: calc(60% - 120px);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding-left: 60px;
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+li.story_item.story_container_2 a div.story_card_subgraph {
+    position: absolute;
+    height: 450px;
+    left: calc(60% - 490px);
+    bottom: 10px;
+    width: calc(40% - 120px);
+    border-radius: 25px;
+    z-index: 500;
+}
+
+li.story_item.story_container_2 a div.story_card_content {
+    position: absolute;
+    height: 100%;
+    left: 60%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding-right: 60px;
+    overflow: hidden;
+}
+
+li.story_item.story_container_2 a div.story_card_content .story_card_header {
+    width: 100%;
+    color: #2a75c5;
+    font-size: 30px;
+}
+
+li.story_item.story_container_2 a div.story_card_content .story_card_header .story_card_tagline {
+    font-size: 15px;
+    color: #2a75c5d8;
+}
+
+li.story_item.story_container_2 a div.story_card_content .story_card_description {
+    width: 100%;
+    color: #414042;
+    font-size: 15px;
+    font-family: 'Roboto';
+    text-align: justify;
+}
+
+#aboutContainer {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    width: calc(100% - 110px);
+    height: calc(100% - 60px);
+    border: solid 5px #2a75c53f;
+    border-radius: 30px;
+    background-color: #ffffff;
+    z-index: 1;
+}
+
+#info_capa {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 50%;
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+#info_capa img {
+    position: absolute;
+    left: -450px;
+    width: 200%;
+    opacity: 80%;
+}
+
+#info_titulo {
+    position: absolute;
+    left: 50%;
+    top: 0px;
+    height: 5%;
+    width: calc(50% - 120px);
+    text-align: center;
+    color: #2a75c5;
+    margin: 60px;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+#info_texto {
+    position: absolute;
+    left: 50%;
+    top: calc(5% + 120px);
+    height: calc(100% - 180px - 5%);
+    width: calc(50% - 120px);
+    font-size: 25px;
+    color: #414042;
+    margin: 0px 60px 60px 60px;
+    text-align: justify;
+}
+
+.no_show {
+    display: none;
+}
+
+.storycard {
+    position: relative;
+}
+
+#story {
+    position: absolute;
+    height: 600px;
+}
+
+div#histórias {
+    height: 600px;
+}

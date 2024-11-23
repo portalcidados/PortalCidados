@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <!--Page Title-->
+    <title>Namari - Free Landing Page Template</title>
+
+    <!--Meta Keywords and Description-->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="images/favicon.ico" title="Favicon"/>
+
+    <!-- Main CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Namari Color CSS -->
+    <link rel="stylesheet" href="css/namari-color.css">
+
+    <!--Icon Fonts - Font Awesome Icons-->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!-- Animate CSS-->
+    <link href="css/animate.css" rel="stylesheet" type="text/css">
+
+    <!--Google Webfonts-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto Condensed' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<script>
+    const preloader = document.createElement('div');
+    preloader.id = 'preloader';
+    const status = document.createElement('div');
+    status.id = 'status';
+    status.className = 'la-ball-triangle-path';
+    for (let i = 0; i < 3; i++) {
+        const ball = document.createElement('div');
+        status.appendChild(ball);
+    }
+    preloader.appendChild(status);
+    document.body.appendChild(preloader);
+
+    const wrapper = document.createElement('div');
+    wrapper.id = 'wrapper';
+
+    const header = document.createElement('header');
+    header.id = 'banner';
+    header.className = 'scrollto clearfix';
+    header.setAttribute('data-enllax-ratio', '.5');
+
+    const headerContent = document.createElement('div');
+    headerContent.id = 'header';
+    headerContent.className = 'nav-collapse';
+
+    const row = document.createElement('div');
+    row.className = 'row clearfix';
+
+    const col1 = document.createElement('div');
+    col1.className = 'col-1';
+
+    const logoDiv = document.createElement('div');
+    logoDiv.id = 'logo';
+
+    const logo = document.createElement('div');
+    logo.id = 'banner-logo';
+    logo.alt = 'Landing Page';
+    const logo2 = document.createElement('div');
+    logo2.id = 'navigation-logo';
+    logo2.alt = 'Landing Page';
+    const createTextDiv = (id, text, className = 'text', hidden = false) => {
+        const div = document.createElement('div');
+        div.id = id;
+        div.className = className;
+        div.textContent = text;
+        if (hidden) {
+            div.classList.add('hidden');
+        }
+        return div;
+    };
+    const cidade = createTextDiv('cidade', 'Cidade');
+    const em = createTextDiv('em', 'em');
+    const dados = createTextDiv('dados', 'Dados');
+    const cidados = createTextDiv('cidados', 'CiDados', 'text', true);
+    const portal = createTextDiv('portal', 'Portal', 'text2', true);
+    const bg = createTextDiv('bg', '', 'text2', true);
+    logo.appendChild(cidade);
+    logo.appendChild(em);
+    logo.appendChild(dados);
+    logo.appendChild(cidados);
+    logo.appendChild(portal);
+    logo.appendChild(bg);
+    logoDiv.appendChild(logo);
+    const cidade2 = createTextDiv('cidade2', 'Cidade');
+    const em2 = createTextDiv('em2', 'em');
+    const dados2 = createTextDiv('dados2', 'Dados');
+    const cidados2 = createTextDiv('cidados2', 'CiDados', 'text', true);
+    const portal2 = createTextDiv('portal2', 'Portal', 'text2', true);
+    const bg2 = createTextDiv('bg2', '', 'text2', true);
+    logo2.appendChild(cidade2);
+    logo2.appendChild(em2);
+    logo2.appendChild(dados2);
+    logo2.appendChild(cidados2);
+    logo2.appendChild(portal2);
+    logo2.appendChild(bg2);
+    logoDiv.appendChild(logo2);
+    document.addEventListener('DOMContentLoaded', () => {
+        const emText = document.getElementById('em');
+        const cidadeText = document.getElementById('cidade');
+        const dadosText = document.getElementById('dados');
+        const cidadosText = document.getElementById('cidados');
+        const portalText = document.getElementById('portal');
+        const portalbg = document.getElementById('bg');
+        const emText2 = document.getElementById('em2');
+        const cidadeText2 = document.getElementById('cidade2');
+        const dadosText2 = document.getElementById('dados2');
+        const cidadosText2 = document.getElementById('cidados2');
+        const portalText2 = document.getElementById('portal2');
+        const portalbg2 = document.getElementById('bg2');
+
+        setTimeout(() => {
+            emText.classList.add('hidden');
+            emText2.classList.add('hidden');
+        }, 1000); // Desaparecimento do em inicial após 1 segundos
+
+        setTimeout(() => {
+            cidadeText.classList.add('collide_to_right');
+            dadosText.classList.add('collide_to_left');
+            cidadeText2.classList.add('collide_to_right');
+            dadosText2.classList.add('collide_to_left');
+        }, 2000); // Colisão após 2 segundos
+
+        setTimeout(() => {
+            cidadeText.classList.add('hidden');
+            dadosText.classList.add('hidden');
+            cidadosText.classList.remove('hidden');
+            cidadeText2.classList.add('hidden');
+            dadosText2.classList.add('hidden');
+            cidadosText2.classList.remove('hidden');
+        }, 3000); // Exibição de "Cidados" após 4 segundos
+
+        setTimeout(() => {
+            portalText.classList.remove('hidden');
+            portalbg.classList.remove('hidden');
+            portalbg.classList.add('move');
+            portalText2.classList.remove('hidden');
+            portalbg2.classList.remove('hidden');
+            portalbg2.classList.add('move');
+        }, 4000); // Exibição de "Portal" após 5 segundos
+    });
+
+    //const logo1 = document.createElement('img');
+    //logo1.src = 'images/logo.png';
+    //logo1.id = 'banner-logo';
+    //logo1.alt = 'Landing Page';
+    //const logo2 = document.createElement('img');
+    //logo2.src = 'images/logo-2.png';
+    //logo2.id = 'navigation-logo';
+    //logo2.alt = 'Landing Page';
+    //logoDiv.appendChild(logo1);
+    //logoDiv.appendChild(logo2);
+
+    const aside = document.createElement('aside');
+    const socialIcons = document.createElement('ul');
+    socialIcons.className = 'social-icons';
+    const li = document.createElement('li');
+    const instagramLink = document.createElement('a');
+    instagramLink.target = '_blank';
+    instagramLink.title = 'Instagram';
+    instagramLink.href = 'http://www.instagram.com/username';
+    const instagramIcon = document.createElement('i');
+    instagramIcon.className = 'fa fa-instagram fa-1x';
+    const instagramText = document.createElement('span');
+    instagramText.textContent = 'Instagram';
+    instagramLink.appendChild(instagramIcon);
+    instagramLink.appendChild(instagramText);
+    li.appendChild(instagramLink);
+    socialIcons.appendChild(li);
+    aside.appendChild(socialIcons);
+
+    const navMain = document.createElement('nav');
+    navMain.id = 'nav-main';
+    const navList = document.createElement('ul');
+    const navItems = ['Início', 'Sobre', 'Histórias', 'Repercursão', 'Equipe', 'Dados'];
+    navItems.forEach(item => {
+        const navItem = document.createElement('li');
+        const navLink = document.createElement('a');
+        navLink.href = `#${item.toLowerCase()}`;
+        navLink.textContent = item;
+        navItem.appendChild(navLink);
+        navList.appendChild(navItem);
+    });
+    navMain.appendChild(navList);
+
+    const navTrigger = document.createElement('div');
+    navTrigger.id = 'nav-trigger';
+    navTrigger.innerHTML = '<span></span>';
+
+    col1.appendChild(logoDiv);
+    col1.appendChild(aside);
+    col1.appendChild(navMain);
+    col1.appendChild(navTrigger);
+
+    row.appendChild(col1);
+    headerContent.appendChild(row);
+    header.appendChild(headerContent);
+
+    const bannerContent = document.createElement('div');
+    bannerContent.id = 'banner-content';
+    bannerContent.className = 'row clearfix';
+    const col38 = document.createElement('div');
+    col38.className = 'col-38';
+
+    const sectionHeading = document.createElement('div');
+    sectionHeading.className = 'section-heading';
+    const title = document.createElement('h1');
+    title.textContent = 'Título';
+    const subtitle = document.createElement('h2');
+    subtitle.textContent = 'Brevíssimo resumo sobre os objetivos e principais achados da pesquisa.';
+
+    sectionHeading.appendChild(title);
+    sectionHeading.appendChild(subtitle);
+
+    const button = document.createElement('a');
+    button.href = '#';
+    button.className = 'button';
+    button.textContent = 'Link para o primeiro Datavis';
+
+    col38.appendChild(sectionHeading);
+    col38.appendChild(button);
+    bannerContent.appendChild(col38);
+
+    header.appendChild(bannerContent);
+    wrapper.appendChild(header);
+
+    // Create main content
+    const main = document.createElement('main');
+    main.id = 'content';
+
+    // About Section
+    const aboutSection = document.createElement('section');
+    aboutSection.id = 'sobre';
+    aboutSection.className = 'introduction scrollto';
+    const aboutRow = document.createElement('div');
+    aboutRow.className = 'row clearfix';
+
+    const aboutCol3 = document.createElement('div');
+    aboutCol3.className = 'col-3';
+
+    const aboutHeading = document.createElement('div');
+    aboutHeading.className = 'section-heading';
+    const aboutTitle = document.createElement('h3');
+    aboutTitle.textContent = 'Sobre a Pesquisa';
+    const aboutSubtitle = document.createElement('h2');
+    aboutSubtitle.className = 'section-title';
+    aboutSubtitle.textContent = 'Título';
+    const aboutDesc = document.createElement('p');
+    aboutDesc.className = 'section-subtitle';
+    aboutDesc.textContent = 'Subtítulo';
+
+    aboutHeading.appendChild(aboutTitle);
+    aboutHeading.appendChild(aboutSubtitle);
+    aboutHeading.appendChild(aboutDesc);
+    aboutCol3.appendChild(aboutHeading);
+
+    const aboutCol2_3 = document.createElement('div');
+    aboutCol2_3.className = 'col-2-3';
+
+    const points = [
+        { icon: 'fa-book', title: 'Ponto 1', desc: 'Breve resumo sobre o ponto 1' },
+        { icon: 'fa-flask', title: 'Ponto 2', desc: 'Breve resumo sobre o ponto 2' },
+        { icon: 'fa-map', title: 'Ponto 3', desc: 'Breve resumo sobre o ponto 3' },
+        { icon: 'fa-line-chart', title: 'Ponto 4', desc: 'Breve resumo sobre o ponto 4' }
+    ];
+
+    points.forEach((point, index) => {
+        const iconBlock = document.createElement('div');
+        iconBlock.className = `col-2 icon-block icon-top wow fadeInUp`;
+        iconBlock.setAttribute('data-wow-delay', `${0.1 + index * 0.2}s`);
+
+        const iconDiv = document.createElement('div');
+        iconDiv.className = 'icon';
+        const icon = document.createElement('i');
+        icon.className = `fa ${point.icon} fa-2x`;
+        iconDiv.appendChild(icon);
+
+        const description = document.createElement('div');
+        description.className = 'icon-block-description';
+        const title = document.createElement('h4');
+        title.textContent = point.title;
+        const paragraph = document.createElement('p');
+        paragraph.textContent = point.desc;
+
+        description.appendChild(title);
+        description.appendChild(paragraph);
+
+        iconBlock.appendChild(iconDiv);
+        iconBlock.appendChild(description);
+
+        aboutCol2_3.appendChild(iconBlock);
+    });
+
+    aboutRow.appendChild(aboutCol3);
+    aboutRow.appendChild(aboutCol2_3);
+    aboutSection.appendChild(aboutRow);
+    main.appendChild(aboutSection);
+
+    // history Section
+    const servicesSection = document.createElement('div');
+    servicesSection.id = 'histórias';
+    servicesSection.className = 'scrollto clearfix';
+    const servicesRow = document.createElement('div');
+    servicesRow.className = 'row no-padding-bottom clearfix';
+
+    const servicesCol1 = document.createElement('div');
+    servicesCol1.className = 'col-1';
+
+    const servicesHeading = document.createElement('div');
+    servicesHeading.className = 'section-heading';
+    const servicesTitle = document.createElement('h3');
+    const servicesSubtitle = document.createElement('div');
+    servicesSubtitle.id = 'story';
+    servicesSubtitle.className = 'col-1';
+    servicesHeading.appendChild(servicesTitle);
+    servicesHeading.appendChild(servicesSubtitle);
+
+    servicesCol1.appendChild(servicesHeading);
+    servicesRow.appendChild(servicesCol1);
+    servicesSection.appendChild(servicesRow);
+    main.appendChild(servicesSection);
+
+    const StoryData = [
+    {
+        imgSrc: "/iv_svg/AF-Elementos-Mobilidade-15.svg",
+        g_type: "map",
+        long: -46.5746,
+        lat: -23.6387,
+        zoom: 11.2,
+        layers: [{
+            layer: 'portal_dados:ZEU EETU', 
+            servertype: 'wms',
+            server: 'https://geoserver.datascience.insper.edu.br/geoserver/ows?'
+        },
+        {
+            layer:'portal_dados:Linhas do Metrô',
+            servertype: 'wms',
+            server: 'https://geoserver.datascience.insper.edu.br/geoserver/ows?'
+        }],
+        title: "Por que surgiram tantos prédios próximos ao metrô?",
+        tagline: "Por Fulano de Tal",
+        data: {
+            data1: [{
+                x:[2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+                y:[77, 106, 75, 48, 104, 156, 209, 252, 185],
+                type: 'bar',
+                marker: {
+                    color: ['#2a75c5d8', '#2a75c5d8', '#2a75c5d8', '#2a75c5d8', '#2a75c5d8', '#2a75c5d8', '#2a75c5d8', '#f7724cd8', '#2a75c5d8'],
+                }
+            }],
+            layout: {
+                width: 500,
+                height: 500,
+                plot_bgcolor: 'rgba(255, 255, 255, 0)',
+                paper_bgcolor: 'rgba(255, 255, 255, 0)',
+                title: {
+                    text: 'Novos Empreendimentos em Zonas EETU',
+                    font: {
+                        family: 'Roboto Condensed',
+                        size: 18,
+                        color: '#2a75c5d8',
+                        weight: 'bold',
+                    },
+                    xref: 'paper',
+                    x: 0.5,
+                    y: 0.85,
+                },
+                //xaxis: { title: 'Anos' },
+                //yaxis: { title: 'Números de Empreendimentos' },
+                font: {
+                    family: 'Roboto Condensed',
+                },
+                annotations: [
+                    {
+                        x: 2020,  
+                        y: 255,  
+                        text: '<b>Mais de 250 novos<br>empreendimentos</b>',
+                        font: {
+                            size: 15,
+                            family: 'Roboto Condensed',
+                            color: '#f7724c'
+                        },
+                        showarrow: true,  
+                        arrowhead: 2,  
+                        ax: 0,  
+                        ay: -40 
+                    },
+                    {
+                        x: 2016.5,  
+                        y: 200,  
+                        text: 'Início do impacto do PDE 2014',
+                        textangle: '-90',
+                        font: {
+                            size: 12,
+                            family: 'Roboto Condensed',
+                            color: '#72975c',
+                        },
+                        showarrow: false,
+                    }
+                ],
+                shapes: [{
+                    type: 'rect',
+                    x0: 2016.5,
+                    y0: 0, 
+                    x1: 2022,
+                    y1: 280, 
+                    fillcolor: '#72975cd8', 
+                    opacity: 0.1, 
+                    line: {
+                        width: 0,
+                    },
+                    layer: 'below',
+                }]
+            },
+        },
+        description: "Os EETU se concentram em regiões consolidadas da cidade, onde está presente a maior parte dos comércios, empregos e infraestrutura urbana. Mesmo antes de passarem a ser regulados por uma zona específica a partir do PDE-2014 e LPUOS-2016, os quarteirões dos atuais eixos já apresentavam concentração de urbanidades, alta demanda locacional e, portanto, alto valor da terra. Ainda assim, verificou-se um considerável aumento da produção habitacional formal nos eixos em todos os indicadores avaliados."
+    },
+    {
+        imgSrc: "/iv_svg/af-elementos-mobilidade-13.svg",
+        g_type: "graph",
+        title: "O plano diretor de 2014 fez a cidade de São Paulo virar um grande canteiro de obras?",
+        tagline: "Por Fulano de Tal",
+        data: { 
+            data1: [{
+                x:[2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+                y:[33230, 43549, 41139, 33095, 38348, 47809, 83675, 77963, 48225],
+                type: 'bar',
+                marker: {
+                    color: ['#2a75c5d8', '#2a75c5d8', '#2a75c5d8', '#2a75c5d8', '#2a75c5d8', '#2a75c5d8', '#f7724cd8', '#2a75c5d8', '#2a75c5d8'],
+                }
+            }],
+            layout: {
+                width: 650,
+                height: 700,
+                title: {
+                    text: 'Evolução de Unidades Habitacionais Construídas em SP',
+                    font: {
+                        family: 'Roboto Condensed',
+                        size: 20,
+                        color: '#2a75c5d8',
+                        weight: 'bold',
+                    },
+                    xref: 'paper',
+                    x: 0.5,
+                    y: 0.9,
+                },
+                xaxis: { title: 'Anos' },
+                yaxis: { title: 'Unidades Habitacionais' },
+                font: {
+                    family: 'Roboto Condensed',
+                },
+                annotations: [
+                    {
+                        x: 2019,  
+                        y: 85000,  
+                        text: '<b>Mais de 83 mil habitações em 2019</b>',
+                        font: {
+                            size: 15,
+                            family: 'Roboto Condensed',
+                            color: '#f7724c'
+                        },
+                        showarrow: true,  
+                        arrowhead: 2,  
+                        ax: 0,  
+                        ay: -40 
+                    },
+                    {
+                        x: 2016.5,  
+                        y: 65000,  
+                        text: 'Início do impacto do PDE 2014',
+                        textangle: '-90',
+                        font: {
+                            size: 12,
+                            family: 'Roboto Condensed',
+                            color: '#72975c',
+                        },
+                        showarrow: false,
+                    }
+                ],
+                shapes: [{
+                    type: 'rect',
+                    x0: 2016.5, // Valor inicial de x
+                    y0: 0, // Valor inicial de y (em relação ao eixo y)
+                    x1: 2022, // Valor final de x
+                    y1: 90000, // Valor final de y (em relação ao eixo y)
+                    fillcolor: '#72975cd8', // Cor do retângulo
+                    opacity: 0.1, // Opacidade do retângulo
+                    line: {
+                        width: 0 // Largura da borda do retângulo
+                    },
+                    layer: 'below',
+                }]
+            },
+        },
+        description: "Tem sido bastante comum nos últimos anos ouvir de moradores de São Paulo ou ler nos meios de comunicação questões relacionadas à cidade “ter virado um grande canteiro de obras”, a uma intensa “verticalização” da cidade e a um forte aquecimento no mercado imobiliário. Questões que também são fortemente associadas ao Plano Diretor Estratégico de São Paulo – PDE de 2014, com várias pessoas atribuindo as mudanças aos impactos do plano de ordenamento territorial da cidade. O que dizem os dados? Há mesmo um aumento na produção imobiliária em São Paulo pós PDE 2014?"
+    },
+    {
+        imgSrc: "/iv_svg/af-elementos-mobilidade-02.svg",
+        g_type: "3d",
+        origemx: -46.662667879969966,
+        origemy: -23.55975713834501,
+        isAnimate: false,
+        title: "A quadra onde eu moro é próxima ao transporte público?",
+        tagline: "Por Fulano de Tal",
+        description: "Na discussão da Revisão do Plano Diretor, que foi aprovada em 2023, o aumento da área de influência dos eixos foi amplamente discutido a partir de novas regras propostas por vereadores na Câmara Municipal. O estudo trouxe estimativas sobre as implicações dos novos critérios de demarcação dos eixos propostos pelo legislativo e da regra final aprovada. A discussão se centrou em três diferentes critérios: a proposta inicial do 1º substitutivo do relator; a proposta intermediária debatida na mídia logo antes da divulgação do 2º substitutivo; e a proposta final aprovada que constou no 2º substitutivo."
+    },
+    {
+        imgSrc: "/iv_svg/af-elementos-mobilidade-03.svg",
+        g_type: "graph",
+        title: "As regras para vagas de garagem na revisão do Plano Diretor de São Paulo",
+        tagline: "Por Fulano de Tal",
+        data: { 
+            data1: [{
+                x:[2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+                y:[1.5, 1.4, 1.4, 1.4, 1.4, 1.2, 1.1, 1.2, 0.8, 0.8, 0.7, 0.5, 0.5],
+                type: 'line',
+                line: {
+                    color: '#f7724cd8',
+                }
+            }],
+            layout: {
+                width: 650,
+                height: 700,
+                title: {
+                    text: 'Evolução da Média de Vagas de Garagem',
+                    font: {
+                        family: 'Roboto Condensed',
+                        size: 20,
+                        color: '#2a75c5d8',
+                        weight: 'bold',
+                    },
+                    xref: 'paper',
+                    x: 0.5,
+                    y: 0.9,
+                },
+                xaxis: { title: 'Anos' },
+                yaxis: { title: 'Média de Vagas por Unidade Habitacional' },
+                font: {
+                    family: 'Roboto Condensed',
+                },
+                images: [
+                    {
+                      "source": "/iv_svg/af-elementos-mobilidade-03.svg",
+                      "xref": "x",
+                      "yref": "y",
+                      "x": 2010,
+                      "y": 1.35,
+                      "sizex": 3,
+                      "sizey": 3,
+                      "xanchor": "left",
+                      "yanchor": "bottom"
+                    },
+                    {
+                        "source": "/icons/down-arrow.svg",
+                        "xref": "x",
+                        "yref": "y",
+                        "x": 2017.5,
+                        "y": 0.94,
+                        "sizex": 1,
+                        "sizey": 1,
+                        "xanchor": "center",
+                        "yanchor": "bottom"
+                      },
+                ],
+                annotations: [
+                    {
+                        x: 2016,  
+                        y: 1.25,  
+                        text: '<b>1,2</b>',
+                        font: {
+                            size: 30,
+                            family: 'Roboto Condensed',
+                            color: '#2a75c5'
+                        },
+                        showarrow: true,  
+                        arrowhead: 2,  
+                        ax: 0,  
+                        ay: -40 
+                    },
+                    {
+                        x: 2021,  
+                        y: 0.55,  
+                        text: '<b>0,5</b>',
+                        font: {
+                            size: 30,
+                            family: 'Roboto Condensed',
+                            color: '#2a75c5'
+                        },
+                        showarrow: true,  
+                        arrowhead: 2,  
+                        ax: 0,  
+                        ay: -40 
+                    },
+                    {
+                        x: 2019.75,  
+                        y: 0.9,  
+                        text: '<b>58,3%</b>',
+                        font: {
+                            size: 50,
+                            family: 'Roboto Condensed',
+                            color: '#f7724c'
+                        }
+                    },
+                    {
+                        x: 2016.5,  
+                        y: 0.4,  
+                        text: 'Início do impacto do PDE 2014',
+                        textangle: '-90',
+                        font: {
+                            size: 12,
+                            family: 'Roboto Condensed',
+                            color: '#72975c',
+                        },
+                        showarrow: false,
+                    },
+                ],
+                shapes: [{
+                    type: 'rect',
+                    x0: 2016.5, // Valor inicial de x
+                    y0: 0, // Valor inicial de y (em relação ao eixo y)
+                    x1: 2022, // Valor final de x
+                    y1: 1.8, // Valor final de y (em relação ao eixo y)
+                    fillcolor: '#72975cd8', // Cor do retângulo
+                    opacity: 0.1, // Opacidade do retângulo
+                    line: {
+                        width: 0 // Largura da borda do retângulo
+                    },
+                    layer: 'below',
+                }]
+            },
+        },
+        description: "As vagas de garagem, tanto em áreas privadas quanto em ruas públicas, estão cada vez mais regulamentadas e valorizadas por incentivar o uso do carro. A infraestrutura para veículos, como espaço nas ruas ou garagens, aumenta seu uso e influencia na escolha do modo de deslocamento. Geralmente localizados em bairros centrais com empregos e serviços, os imóveis são mais caros devido à proximidade do transporte público e urbanidades, atraindo uma população de alta renda que muitas vezes não utiliza transporte público diariamente. Após consulta pública para revisar o Plano Diretor, a Prefeitura de São Paulo decidiu estimular mais vagas de garagem (+12%) em detrimento de unidades habitacionais próximas ao transporte público."
+    },
+    {
+        imgSrc: "/iv_svg/af-elementos-infraestrutura-16.svg",
+        g_type: "map",
+        long: -46.6246,
+        lat: -23.5587,
+        zoom: 11.2,
+        layers: [{
+            layer:'acesso_pde:pius', 
+            servertype: 'wms',
+            server: 'https://geoserver.datascience.insper.edu.br/geoserver/ows?'
+        }],
+        title: "O que o mercado imobiliário tem produzido enquanto os PIU's não saem do papel?",
+        tagline: "Por Fulano de Tal",
+        description: "Em tese, esperava-se que a produção imobiliária na Macroárea de Estruturação Metropolitana - MEM de São Paulo estivesse quase 'congelada' devido ao plano diretor de 2014, não plenamente cumprido para liberar as construções na área. Mas a análise dos pedidos de licenciamento por Macroárea mostra que, após uma queda entre 2016-2018, houve aumento em todas elas, especialmente na MEM em unidades, área de terreno e área construída. São números expressivos que indicam aumento de densidade habitacional (e possivelmente populacional), destacando-se em comparação com as demais Macroáreas do PDE-2014."
+    },
+];
+
+    // Função que cria formas geométricas estrudadas //
+    function shapes(origemx, origemy, json_projecao, json_lotes, camera, utm, scene) {
+    var contador = 0
+    var east;
+    var north;
+    var coord;
+    for ( var j of json_projecao.features ) {
+        var shape = new THREE.Shape();
+        coord = [j.geometry.coordinates[0][0][1], j.geometry.coordinates[0][0][0]];
+        east = coord[1] - origemx;
+        north = coord[0] - origemy;
+        shape.moveTo( east, north);
+        for ( var i of j.geometry.coordinates[0]) {
+            coord = [i[1], i[0]];
+            east = coord[1] - origemx;
+            north = coord[0] - origemy;
+            shape.lineTo(east, north);
+        }
+        var extrudeSettings = {
+            steps: 1,
+            depth: j.properties.ed_altura,
+            bevelEnabled: false,
+            bevelThickness: 1,
+            bevelSize: 1,
+            bevelOffset: 0,
+            bevelSegments: 1
+        };
+        var geometry = new THREE.ExtrudeGeometry( shape, extrudeSettings );
+        var material = new THREE.MeshMatcapMaterial( { 
+            color: 0xb8d9ff,
+        });
+        var mesh = new THREE.Mesh( geometry, material );
+        scene.add( mesh );
+        var geo = new THREE.EdgesGeometry( mesh.geometry );
+        var mat = new THREE.LineBasicMaterial( { color: 0xffd7cd } );
+        var wireframe = new THREE.LineSegments( geo, mat );
+        mesh.add( wireframe );
+        contador += 1;
+    }
+    contador = 0;
+    for ( var j of json_lotes.features ) {
+        var points = [];
+        for ( var i of j.geometry.coordinates[0]) {
+            coord = [i[1], i[0]];
+            east = coord[1];
+            north = coord[0];
+            points.push(new THREE.Vector3(east-origemx, north-origemy, 0))
+        }
+        var geometry = new THREE.BufferGeometry().setFromPoints(points);
+        var material = new THREE.LineBasicMaterial( { 
+            color: 0x8a8a87,
+        });
+        var line = new THREE.Line( geometry, material );
+        scene.add( line );
+        contador += 1;
+    }
+}
+
+    // Função para criar os story cards //
+    function CreateStoryCard(card, number) {
+    const li = document.createElement("li");
+    li.classList.add('story_item', 'story_container_' + number);
+    if (number >= 4) {
+        li.classList.add('no_show');
+    }
+    const a = document.createElement("a");
+    a.classList.add("story_card");
+
+    const graph = document.createElement("div");
+    graph.id = "story_card_graph_" + number;
+    graph.classList.add('story_card_graph');
+
+    const sub_graph = document.createElement("div");
+    sub_graph.id = "story_card_subgraph_" + number;
+    sub_graph.classList.add('story_card_subgraph');
+  
+    const content = document.createElement("div");
+    content.classList.add("story_card_content");
+
+    const img = document.createElement("img");
+    img.src = card.imgSrc;
+    img.alt = "";
+    img.classList.add("story_card_image");
+    content.appendChild(img);
+  
+    const header = document.createElement("div");
+    header.classList.add("story_card_header");
+  
+    const headerText = document.createElement("div");
+    headerText.classList.add("story_card_header-text");
+  
+    const title = document.createElement("h3");
+    title.classList.add("story_card_title");
+    title.textContent = card.title;
+    headerText.appendChild(title);
+  
+    if (card.tagline) {
+      const tagline = document.createElement("span");
+      tagline.classList.add("story_card_tagline");
+      tagline.textContent = card.tagline;
+      headerText.appendChild(tagline);
+    }
+  
+    const status = document.createElement("span");
+    status.classList.add("story_card_status");
+    status.textContent = card.status;
+    headerText.appendChild(status);
+  
+    header.appendChild(headerText);
+    content.appendChild(header);
+  
+    const description = document.createElement("p");
+    description.classList.add("story_card_description");
+    description.textContent = card.description;
+    content.appendChild(description);
+  
+    a.appendChild(content);
+    a.appendChild(graph);
+    a.appendChild(sub_graph);
+    li.appendChild(a);
+  
+    return li;
+}
+
+    // Função para criar o conteúdo de cada componente da página de projetos //
+    function ComponentBuilder(div, StoryData) {
+        const cardsContainer = document.createElement("ul");
+        cardsContainer.classList.add("story_card");
+        var number = 1;
+        StoryData.forEach(card => {
+            const cardElement = CreateStoryCard(card, number);
+            cardsContainer.appendChild(cardElement);
+            number = number + 1;
+        });
+        div.appendChild(cardsContainer);
+        var items = div.querySelectorAll('.story_item');
+        var numItems = items.length;
+        items.forEach(item => {
+            item.addEventListener('click', function() {
+                const currentClass = item.classList[1];
+                if (currentClass === 'story_container_1') {
+                    items.forEach(otherItem => {
+                        otherItem.classList.remove('no_show');
+                        var classe = otherItem.classList[1];
+                        var number = parseInt(classe.split('_')[2]);
+                        if (number == 2) {
+                            otherItem.classList.remove('story1_to_story2');
+                            otherItem.classList.remove('story3_to_story2');
+                        }
+                        number = number + 1;
+                        if (number > numItems){
+                            number = 1;
+                        }
+                        var newclasse = `story_container_${number}`;
+                        otherItem.classList.remove(classe);
+                        otherItem.classList.add(newclasse);
+                        if (number == 2) {
+                            otherItem.classList.add('story1_to_story2');
+                        }
+                        if (number >= 4) {
+                            otherItem.classList.add('no_show');
+                        }
+                    });
+                } 
+                else if (currentClass === 'story_container_3') {
+                    items.forEach(otherItem => {
+                        otherItem.classList.remove('no_show');
+                        var classe = otherItem.classList[1];
+                        var number = parseInt(classe.split('_')[2]);
+                        if (number == 2) {
+                            otherItem.classList.remove('story3_to_story2');
+                            otherItem.classList.remove('story1_to_story2');
+                        }
+                        number = number - 1;
+                        if (number < 1){
+                            number = numItems;
+                        }
+                        var newclasse = `story_container_${number}`;
+                        otherItem.classList.remove(classe);
+                        otherItem.classList.add(newclasse);
+                        if (number == 2) {
+                            otherItem.classList.add('story3_to_story2');
+                        }
+                        if (number >= 4) {
+                            otherItem.classList.add('no_show');
+                        }
+                    });
+                }
+            });
+        });
+    }
+
+    // Função para criar os gráficos com plotly //
+    function GraphBuilder(cards) {
+    var graficos = document.getElementsByClassName('story_card_graph');
+    var subgraficos = document.getElementsByClassName('story_card_subgraph');
+    var number = 0;
+    cards.forEach(card => {
+        if (card.g_type == 'graph') {
+            Plotly.newPlot(graficos[number], card.data.data1, card.data.layout, {displayModeBar: false,});
+        }
+        else if (card.g_type == 'map') {
+            var map_card = L.map(graficos[number], {
+                zoomControl:false, 
+                maxZoom:22, 
+                minZoom:10, 
+                zoomDelta: 0.60, 
+                zoomSnap: 0.20, 
+                wheelPxPerZoomLevel: 100, 
+                attributionControl: false,
+            }).setView([card.lat,card.long], card.zoom);
+            function style_limites_municipais_card() {
+                return {
+                    pane: 'pane_limites_municipais_card',
+                    opacity: 1,
+                    color: '#BCBEC0',
+                    dashArray: '',
+                    lineCap: 'butt',
+                    lineJoin: 'miter',
+                    weight: 0.5, 
+                    fill: true,
+                    fillOpacity: 1,
+                    fillColor: '#ffffff',
+                    interactive: false,
+                }
+            }
+            map_card.createPane('pane_limites_municipais_card');
+            map_card.getPane('pane_limites_municipais_card').style.zIndex = 400;
+            map_card.getPane('pane_limites_municipais_card').style['mix-blend-mode'] = 'normal';
+            var layer_limites_municipais_card = new L.geoJson(json_limites_municipais, {
+                attribution: '',
+                interactive: false,
+                dataVar: 'json_limites_municipais',
+                layerName: 'layer_limites_municipais_card',
+                pane: 'pane_limites_municipais_card',
+                style: style_limites_municipais_card,
+                renderer: L.svg(),
+                smoothFactor: 0,
+            })
+            map_card.addLayer(layer_limites_municipais_card);
+            window.addEventListener('resize', function() {
+                map_card.invalidateSize(); // Atualiza o tamanho do mapa quando a janela é redimensionada
+            });
+            for ( var i = 0; i < card.layers.length; i ++ ) {
+                if (card.layers[i].servertype == 'wms') {
+                    var wmsLayer = L.tileLayer.wms(card.layers[i].server, {
+                        layers: card.layers[i].layer,
+                        format: 'image/png',
+                        transparent: true,
+                        pane: 'pane_limites_municipais_card',
+                    })
+                }
+                map_card.addLayer(wmsLayer);
+            }
+            var items = document.querySelectorAll('.story_item');
+            items.forEach(item => {
+                if (item.firstChild.childNodes[1].id == 'story_card_graph_5' || 
+                    item.firstChild.childNodes[1].id == 'story_card_graph_1') {
+                    item.addEventListener('animationend', function() {
+                        map_card.invalidateSize();
+                    });
+                }
+            });
+            if (card.data) {
+                Plotly.newPlot(subgraficos[number], card.data.data1, card.data.layout, {displayModeBar: false,});
+            }
+        }
+        else if (card.g_type == '3d') {
+            var utm = new UTMLatLng();
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color( 0xffffff );
+            var proporcao = 2;
+            const camera = new THREE.PerspectiveCamera( 75, proporcao, 0.1, 1000 );
+            const renderer = new THREE.WebGLRenderer();
+            renderer.setSize( window.innerWidth, window.innerHeight );
+            graficos[number].appendChild( renderer.domElement );
+            var origemx = card.origemx;
+            var origemy = card.origemy;
+            const origem = utm.convertLatLngToUtm(origemy, origemx, 4);
+            origemx = origem.Easting;
+            origemy = origem.Northing;
+            shapes(origemx, origemy, edificacao, quadra, camera, utm, scene);
+            var raio = 2;
+            var circleGeometry = new THREE.CircleGeometry(raio, 32);
+            var circleMaterial = new THREE.MeshBasicMaterial({ color: 0xfe9d82, side: THREE.DoubleSide });
+            var circleMesh = new THREE.Mesh(circleGeometry, circleMaterial);
+            circleMesh.position.set(-10, 110, -0.1);
+            scene.add(circleMesh);
+            camera.position.set(0, -100, 150 );
+            camera.lookAt(-10, 150, 0);
+            var degree = 0;
+            var degreesPerSecond = 1;
+            var clock = new THREE.Clock();
+            function updateCameraPosition(degrees) {
+                var radians = THREE.MathUtils.degToRad(degrees+180);
+                let x = 150 * Math.cos(radians);
+                const z = 150;
+                let y = 150 * Math.sin(radians);
+                camera.position.set(x, y, z);
+                camera.up.set(0, 0, 1)
+                camera.lookAt(-10, 150, 0);
+            }
+            function animate() {
+                if (!card.isAnimate) return;
+                degree += degreesPerSecond * clock.getDelta();;
+                if (degree >= 360) {
+                    degree -= 360;
+                }
+                updateCameraPosition(degree);
+                raio += 0.5;
+                if (raio > 150) {
+                    raio = 2;
+                }
+                circleMesh.geometry.dispose();
+                circleMesh.geometry = new THREE.CircleGeometry(raio, 32);
+                renderer.render(scene, camera);
+                console.log(raio);
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+        number = number + 1;
+    });   
+}
+
+    ComponentBuilder(servicesSubtitle, StoryData);
+    //GraphBuilder(StoryData);
+
+    // Repercursion Section
+    const gallery = document.createElement('aside');
+    gallery.id = 'repercursão';
+    gallery.className = 'row text-center scrollto clearfix';
+    gallery.setAttribute('data-featherlight-gallery', '');
+    gallery.setAttribute('data-featherlight-filter', 'a');
+
+    for (let i = 1; i <= 6; i++) {
+        const anchor = document.createElement('a');
+        anchor.href = `images/gallery-images/gallery-image-${i}.jpg`;
+        anchor.setAttribute('data-featherlight', 'image');
+        anchor.className = `col-3 wow fadeIn`;
+        anchor.setAttribute('data-wow-delay', `${0.1 * i}s`);
+        const img = document.createElement('img');
+        img.src = `images/gallery-images/gallery-image-${i}.jpg`;
+        img.alt = 'Landing Page';
+        anchor.appendChild(img);
+        gallery.appendChild(anchor);
+    }
+
+    main.appendChild(gallery);
+
+    // Crew Section
+    const testimonials = document.createElement('aside');
+    testimonials.id = 'equipe';
+    testimonials.className = 'scrollto text-center';
+    testimonials.setAttribute('data-enllax-ratio', '.2');
+
+    const testimonialsRow = document.createElement('div');
+    testimonialsRow.className = 'row clearfix';
+
+    const testimonialsHeading = document.createElement('div');
+    testimonialsHeading.className = 'section-heading';
+    const testimonialsTitle = document.createElement('h3');
+    testimonialsTitle.textContent = 'Nossa Equipe';
+    const testimonialsSubtitle = document.createElement('h2');
+    testimonialsSubtitle.className = 'section-title';
+    testimonialsSubtitle.textContent = 'Conheça nossos parceiros';
+
+    testimonialsHeading.appendChild(testimonialsTitle);
+    testimonialsHeading.appendChild(testimonialsSubtitle);
+    testimonialsRow.appendChild(testimonialsHeading);
+
+    const testimonialsData = [
+        { img: 'profile.svg', name: 'Nome da Pessoa 1', profession: 'Profissão da pessoa 1' },
+        { img: 'profile.svg', name: 'Nome da Pessoa 2', profession: 'Profissão da pessoa 2' },
+        { img: 'profile.svg', name: 'Nome da Pessoa 3', profession: 'Profissão da pessoa 3' }
+    ];
+
+    testimonialsData.forEach(data => {
+        const blockquote = document.createElement('blockquote');
+        blockquote.className = 'col-3 testimonial classic';
+        const userImg = document.createElement('img');
+        userImg.src = `images/user-images/${data.img}`;
+        userImg.alt = 'User';
+        const userName = document.createElement('p');
+        userName.textContent = data.name;
+        const userProfession = document.createElement('footer');
+        userProfession.textContent = data.profession;
+
+        blockquote.appendChild(userImg);
+        blockquote.appendChild(userName);
+        blockquote.appendChild(userProfession);
+        testimonialsRow.appendChild(blockquote);
+    });
+
+    testimonials.appendChild(testimonialsRow);
+    main.appendChild(testimonials);
+    
+    // Data Section
+    const clientsSection = document.createElement('section');
+    clientsSection.id = 'clients';
+    clientsSection.className = 'scrollto clearfix';
+    const clientsRow = document.createElement('div');
+    clientsRow.className = 'row clearfix';
+
+    const clientsCol3 = document.createElement('div');
+    clientsCol3.className = 'col-3';
+
+    const clientsHeading = document.createElement('div');
+    clientsHeading.className = 'section-heading';
+    const clientsTitle = document.createElement('h3');
+    clientsTitle.textContent = 'Dados';
+    const clientsSubtitle = document.createElement('h2');
+    clientsSubtitle.className = 'section-title';
+    clientsSubtitle.textContent = 'Repositório de dados da pesquisa';
+    const clientsDesc = document.createElement('p');
+    clientsDesc.className = 'section-subtitle';
+    clientsDesc.textContent = 'Sobre os dados';
+
+    clientsHeading.appendChild(clientsTitle);
+    clientsHeading.appendChild(clientsSubtitle);
+    clientsHeading.appendChild(clientsDesc);
+    clientsCol3.appendChild(clientsHeading);
+    clientsRow.appendChild(clientsCol3);
+
+    const clientsCol2_3 = document.createElement('div');
+    clientsCol2_3.className = 'col-2-3';
+
+    const clientLogos = [
+        { src: 'company-logo1.png', label: 'Dados 1' },
+        { src: 'company-logo2.png', label: 'Dados 2' },
+        { src: 'company-logo3.png', label: 'Dados 3' },
+        { src: 'company-logo4.png', label: 'Dados 4' },
+        { src: 'company-logo5.png', label: 'Dados 5' },
+        { src: 'company-logo6.png', label: 'Dados 6' },
+        { src: 'company-logo7.png', label: 'Dados 7' },
+        { src: 'company-logo8.png', label: 'Dados 8' },
+        { src: 'company-logo9.png', label: 'Dados 9' }
+    ];
+
+    clientLogos.forEach(logo => {
+        const clientLink = document.createElement('a');
+        clientLink.href = '#';
+        clientLink.className = 'col-3';
+        const clientImg = document.createElement('img');
+        clientImg.src = `images/company-images/${logo.src}`;
+        clientImg.alt = 'Company';
+        const clientOverlay = document.createElement('div');
+        clientOverlay.className = 'client-overlay';
+        clientOverlay.innerHTML = `<span>${logo.label}</span>`;
+        
+        clientLink.appendChild(clientImg);
+        clientLink.appendChild(clientOverlay);
+        clientsCol2_3.appendChild(clientLink);
+    });
+
+    clientsRow.appendChild(clientsCol2_3);
+    clientsSection.appendChild(clientsRow);
+    main.appendChild(clientsSection);
+    
+    // Footer
+    const footer = document.createElement('footer');
+    footer.id = 'landing-footer';
+    footer.className = 'clearfix';
+    const footerRow = document.createElement('div');
+    footerRow.className = 'row clearfix';
+    
+    const copyright = document.createElement('p');
+    copyright.id = 'copyright';
+    copyright.className = 'col-2';
+    copyright.innerHTML = '';
+    
+    const footerIcons = document.createElement('ul');
+    footerIcons.className = 'col-2 social-icons';
+    const footerLi = document.createElement('li');
+    const footerInstagramLink = document.createElement('a');
+    footerInstagramLink.target = '_blank';
+    footerInstagramLink.title = 'Instagram';
+    footerInstagramLink.href = 'http://www.instagram.com/username';
+    const footerInstagramIcon = document.createElement('i');
+    footerInstagramIcon.className = 'fa fa-instagram fa-1x';
+    const footerInstagramText = document.createElement('span');
+    footerInstagramText.textContent = 'Instagram';
+    
+    footerInstagramLink.appendChild(footerInstagramIcon);
+    footerInstagramLink.appendChild(footerInstagramText);
+    footerLi.appendChild(footerInstagramLink);
+    footerIcons.appendChild(footerLi);
+    
+    footerRow.appendChild(copyright);
+    footerRow.appendChild(footerIcons);
+    footer.appendChild(footerRow);
+    
+    // Append everything to the wrapper
+    wrapper.appendChild(header);
+    wrapper.appendChild(main);
+    wrapper.appendChild(footer);
+    document.body.appendChild(wrapper);
+
+</script>
+
+<!-- Include JavaScript resources -->
+<script src="js/jquery.1.8.3.min.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/featherlight.min.js"></script>
+<script src="js/featherlight.gallery.min.js"></script>
+<script src="js/jquery.enllax.min.js"></script>
+<script src="js/jquery.scrollUp.min.js"></script>
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/jquery.stickyNavbar.min.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/images-loaded.min.js"></script>
+<script src="js/lightbox.min.js"></script>
+<script src="js/site.js"></script>
+
+
+</body>
+</html>
