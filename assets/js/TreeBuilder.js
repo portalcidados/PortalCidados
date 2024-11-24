@@ -3,8 +3,8 @@ export function TreeBuilder($) {
         $('#tree').jstree({
             "types" : 
             {
-                "pontos" : {"icon" : "../icons/pontos.svg", "a_attr" : {"class" : "subtema jstree-ocl"}}, /* https://www.flaticon.com/br/icon-font-gratis/pontos-de-menu_3917230?page=1&position=2&term=tres+pontos&origin=search&related_id=3917230 */
-                "sociedade" : {"icon" : "../icons/sociedade.svg", "a_attr" : {"class" : "tema  jstree-ocl jstree-ocl"}},
+                "pontos" : {"icon" : "./icons/pontos.svg", "a_attr" : {"class" : "subtema jstree-ocl"}}, /* https://www.flaticon.com/br/icon-font-gratis/pontos-de-menu_3917230?page=1&position=2&term=tres+pontos&origin=search&related_id=3917230 */
+                "sociedade" : {"icon" : "./icons/sociedade.svg", "a_attr" : {"class" : "tema  jstree-ocl jstree-ocl"}},
                 "populacao" : {"icon" : "./icons/populacao.svg", "a_attr" : {"class" : "subtema jstree-ocl"}}, /* https://www.flaticon.com/br/icon-font-gratis/usuarios-alt_5529124?page=1&position=7&term=pessoa&origin=search&related_id=5529124 */
                 "caracteristica" : {"icon" : "./icons/caracteristica.svg", "a_attr" : {"class" : "subtema jstree-ocl"}}, /* https://www.flaticon.com/br/icone-gratis/habilidades_2804141?term=pessoa+caracteristicas&page=1&position=40&origin=search&related_id=2804141 */
                 "componentes" : {"icon" : "./icons/componentes.svg", "a_attr" : {"class" : "subtema jstree-ocl"}}, /* https://www.flaticon.com/br/icon-font-gratis/terra-americas_9585979?related_id=9585979 */

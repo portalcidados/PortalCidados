@@ -226,7 +226,7 @@ acessopde_texto.classList.add("menu_projeto_text", "display");
 acessopde_texto.textContent = "Projeto 1";
 acessopde_button.appendChild(acessopde_texto);
 var iframe_acessopde = document.createElement('iframe');
-iframe_acessopde.src = "/projeto/projeto.html";
+iframe_acessopde.src = "./projeto/projeto.html";
 iframe_acessopde.style.width = "100%";
 iframe_acessopde.style.height = "100%";
 iframe_acessopde.frameBorder = "0";
@@ -248,7 +248,7 @@ projeto2.id = 'projeto';*/
 // Conteúdo da info //
 const InfoData =
     {
-        imgSrc: "/iv_svg/af-composicao.svg",
+        imgSrc: "./iv_svg/af-composicao.svg",
         titulo: "A PESQUISA",
         texto: "A pesquisa Acesso a Oportunidades no Plano Diretor de São Paulo (PDE-SP) é desenvolvida pelo Laboratório Arq.Futuro de Cidades do Insper desde outubro de 2021 como forma de qualificar, a partir do desenvolvimento de estudos baseados em dados, o debate público e a tomada de decisões em torno da revisão do Plano Diretor da cidade. Foram realizados encontros com especialistas e tomadores de decisão e publicadas seis notas técnicas que buscaram pautar o debate e incidir na cobertura jornalística sobre o tema, desde o lançamento da primeira minuta de lei, publicada em janeiro de 2023, até a aprovação do 2º substitutivo na câmara dos vereadores. O Insper também participou da organização do Fórum SP 23, um espaço acadêmico voltado a debater propostas baseadas em estudos que apontem caminhos para aprimoramento da implementação da política urbana de São Paulo, seus instrumentos, planos, programas e ações complementares. Além da organização, o Laboratório Arq.Futuro de Cidades, por meio desta pesquisa, foi o grupo acadêmico que apresentou o maior número de trabalhos neste importante evento de reflexão voltado ao aprimoramento da principal política urbana da capital paulista."
     };
@@ -256,7 +256,7 @@ const InfoData =
 // Conteúdo básico das histórias //
 const StoryData = [
     {
-        imgSrc: "/iv_svg/AF-Elementos-Mobilidade-15.svg",
+        imgSrc: "./iv_svg/AF-Elementos-Mobilidade-15.svg",
         g_type: "map",
         long: -46.5746,
         lat: -23.6387,
@@ -350,7 +350,7 @@ const StoryData = [
         description: "Os EETU se concentram em regiões consolidadas da cidade, onde está presente a maior parte dos comércios, empregos e infraestrutura urbana. Mesmo antes de passarem a ser regulados por uma zona específica a partir do PDE-2014 e LPUOS-2016, os quarteirões dos atuais eixos já apresentavam concentração de urbanidades, alta demanda locacional e, portanto, alto valor da terra. Ainda assim, verificou-se um considerável aumento da produção habitacional formal nos eixos em todos os indicadores avaliados."
     },
     {
-        imgSrc: "/iv_svg/af-elementos-mobilidade-13.svg",
+        imgSrc: "./iv_svg/af-elementos-mobilidade-13.svg",
         g_type: "graph",
         title: "O plano diretor de 2014 fez a cidade de São Paulo virar um grande canteiro de obras?",
         tagline: "Por Fulano de Tal",
@@ -429,7 +429,7 @@ const StoryData = [
         description: "Tem sido bastante comum nos últimos anos ouvir de moradores de São Paulo ou ler nos meios de comunicação questões relacionadas à cidade “ter virado um grande canteiro de obras”, a uma intensa “verticalização” da cidade e a um forte aquecimento no mercado imobiliário. Questões que também são fortemente associadas ao Plano Diretor Estratégico de São Paulo – PDE de 2014, com várias pessoas atribuindo as mudanças aos impactos do plano de ordenamento territorial da cidade. O que dizem os dados? Há mesmo um aumento na produção imobiliária em São Paulo pós PDE 2014?"
     },
     {
-        imgSrc: "/iv_svg/af-elementos-mobilidade-02.svg",
+        imgSrc: "./iv_svg/af-elementos-mobilidade-02.svg",
         g_type: "3d",
         origemx: -46.662667879969966,
         origemy: -23.55975713834501,
@@ -566,7 +566,7 @@ const StoryData = [
         description: "As vagas de garagem, tanto em áreas privadas quanto em ruas públicas, estão cada vez mais regulamentadas e valorizadas por incentivar o uso do carro. A infraestrutura para veículos, como espaço nas ruas ou garagens, aumenta seu uso e influencia na escolha do modo de deslocamento. Geralmente localizados em bairros centrais com empregos e serviços, os imóveis são mais caros devido à proximidade do transporte público e urbanidades, atraindo uma população de alta renda que muitas vezes não utiliza transporte público diariamente. Após consulta pública para revisar o Plano Diretor, a Prefeitura de São Paulo decidiu estimular mais vagas de garagem (+12%) em detrimento de unidades habitacionais próximas ao transporte público."
     },
     {
-        imgSrc: "/iv_svg/af-elementos-infraestrutura-16.svg",
+        imgSrc: "./iv_svg/af-elementos-infraestrutura-16.svg",
         g_type: "map",
         long: -46.6246,
         lat: -23.5587,
@@ -1701,16 +1701,16 @@ buttons.forEach(button => {
 // Data for the cards
 const cardData = [
     {
-        imgSrc: "/icons/bg_city.svg",
-        thumbSrc: "/icons/profile.svg",
+        imgSrc: "./icons/bg_city.svg",
+        thumbSrc: "./icons/profile.svg",
         title: "Revisão do Plano Diretor de São Paulo",
         tagline: "Por Fulano de Tal",
         status: "Junho de 2024",
         description: "Revisão do plano diretor de 2014 é revisado: Saiba as principais mudanças que entram na lei."
     },
     {
-        imgSrc: "/icons/metro.svg",
-        thumbSrc: "/icons/profile.svg",
+        imgSrc: "./icons/metro.svg",
+        thumbSrc: "./icons/profile.svg",
         title: "Novas Linhas de Metro",
         tagline: "Por Ciclano de Tal",
         status: "Junho de 2024",
