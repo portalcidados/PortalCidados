@@ -192,7 +192,7 @@ export function TreeBuilder($) {
                             "children" : [
                                 {
                                 "text" : "Densidade Populacional",
-                                "id" : "portal_dados:densidade_demografica_sp",
+                                "id" : "portal_dados:densidade_demografica_sp_portal",
                                 "type" : "splus_sociedade",
                                 },
                             ]
