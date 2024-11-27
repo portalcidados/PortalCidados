@@ -377,19 +377,19 @@
 }
 
 [id*='position_up']:hover, [id*='position_down']:hover {
-    background-image: url(./icons/seta_3.svg);
+    background-image: url(/icons/seta_3.svg);
     cursor: pointer;
 }
 
 [id*="position_up"] {
     top: -40px;
-    background-image: url(./icons/seta_2.svg);
+    background-image: url(/icons/seta_2.svg);
     transform: rotate(-90deg);
 }
 
 [id*="position_down"] {
     bottom: 20px;
-    background-image: url(./icons/seta_2.svg);
+    background-image: url(/icons/seta_2.svg);
     transform: rotate(90deg);
 }
 
