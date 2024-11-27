@@ -764,7 +764,14 @@ export function TreeBuilder($) {
                         "state" : { 
                             "disabled" : true
                         },
-                        "type" : "limites"
+                        "type" : "limites",
+                        "children" : [
+                            {
+                            "text" : "Limites Municipais",
+                            "id" : "portal_dados:municipios_sp",
+                            "type" : "splus_ambcons",
+                            },
+                        ]
                         },
                         {
                         "text" : "Serviços de localização",

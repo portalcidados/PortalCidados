@@ -8,6 +8,7 @@ import $, { data } from 'jquery';
 import 'leaflet-control-geocoder';
 import UTMLatLng from 'utm-latlng';
 import noUiSlider from 'nouislider';
+import MobileDetect from 'mobile-detect';
 import 'jstree';
 import 'jstree/src/jstree.checkbox.js';
 import 'jstree/src/jstree.search.js';
@@ -21,39 +22,24 @@ import 'leaflet.locatecontrol/dist/L.Control.Locate.css';
 import 'leaflet-control-geocoder/dist/Control.Geocoder.css';
 import 'nouislider/dist/nouislider.css';
 import './styles.css';
-//import { json_limites_municipais } from './assets/data/limites_municipais.js';
 import { TreeBuilder } from './assets/js/TreeBuilder.js';
 import { AddDataBar } from './assets/js/AddDataBar.js';
 import { ProjectPageBuilder } from './assets/js/ProjectPageBuilder.js';
 //import { edificacao } from './assets/data/edificacao.js';
 //import { quadra } from './assets/data/quadra.js';
 
-/* Função para  carregar o CSS baseado no pixel ratio
-async function loadStylesheet() {
-    const pixelRatio = window.devicePixelRatio;
-    let stylesheet;
-    if (pixelRatio <= 1) {
-        stylesheet = import('/styles_low.css');
-    } else if (pixelRatio > 1) {
-        stylesheet = import('/styles.css');
-    } else {
-        stylesheet = import('/styles_retina.css');
-    }
-    await stylesheet;
+const md = new MobileDetect(window.navigator.userAgent);
+if (md.mobile()) {
+  //console.log('É um dispositivo móvel');
 }
 
-// Carrega o CSS ao iniciar
-window.onload = loadStylesheet;
-*/
-
-function fetchMunicipios() {
-    const url = 'https://geoserver.datascience.insper.edu.br/geoserver/portal_dados/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=portal_dados%3Amunicipios_sp&outputFormat=application%2Fjson';
+function fetchWFS(string) {
+    string = encodeURIComponent(string);    
+    const url = 'https://geoserver.datascience.insper.edu.br/geoserver/portal_dados/ows?service=WFS&version=1.0.0&request=GetFeature&typeName='+string+'&outputFormat=application%2Fjson';
     const xhr = new XMLHttpRequest();
     xhr.open('GET', url, false);
-    
     try {
       xhr.send();
-      
       if (xhr.status === 200) {
         const geoJsonData = JSON.parse(xhr.responseText);
         return geoJsonData;
@@ -63,7 +49,7 @@ function fetchMunicipios() {
     } catch (error) {
       console.error('Erro ao acessar o GeoJSON:', error);
     }
-  }
+}
 
 // Selecionando o elemento pai com o ID 'app'
 var appDiv = document.getElementById("app");
@@ -838,7 +824,7 @@ function GraphBuilder(cards) {
             //aqui municipio
 
             
-            var json_limites_municipais = fetchMunicipios();
+            var json_limites_municipais = fetchWFS('portal_dados:municipios_sp');
             map_card.createPane('pane_limites_municipais_card');
             map_card.getPane('pane_limites_municipais_card').style.zIndex = 400;
             map_card.getPane('pane_limites_municipais_card').style['mix-blend-mode'] = 'normal';
@@ -1169,6 +1155,16 @@ L.DomEvent.disableClickPropagation(databar);
 L.DomEvent.disableScrollPropagation(databar);
 SimpleScrollbar.initEl(document.getElementById("DataBar"));
 
+// Constrói o div DataBar e adiciona ao main_map //
+var positionbar = document.createElement('div');
+positionbar.id = 'PositionBar';
+positionbar.className = 'placed';
+positionbar.classList.add('no_show');
+main_map.appendChild(positionbar);
+L.DomEvent.disableClickPropagation(positionbar);
+L.DomEvent.disableScrollPropagation(positionbar);
+SimpleScrollbar.initEl(document.getElementById("PositionBar"));
+
 // Constrói o div logo e seus filhos e adiciona no main_map //
 const logo = document.createElement('div');
 logo.id = 'logo';
@@ -1265,6 +1261,8 @@ $('#tree').on('changed.jstree', function () {
         })
         backend_layers_group.addLayer(wmsLayer);
         map.addLayer(wmsLayer);
+        //var dados = fetchWFS(item);
+        //console.log(dados);
     }
     if ( vetor_camadas_novo.length < vetor_camadas.length ) {
         var item = vetor_camadas.filter(element => !vetor_camadas_novo.includes(element))[0];
@@ -1579,7 +1577,7 @@ var layer_OpenStreetMap_0 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/
 layers_group.addLayer(layer_OpenStreetMap_0);
 
 //Cria a camada de Limites Municipais//
-var json_limites_municipais = fetchMunicipios();
+var json_limites_municipais = fetchWFS('portal_dados:municipios_sp');
 map.createPane('pane_limites_municipais');
 map.getPane('pane_limites_municipais').style.zIndex = 400;
 map.getPane('pane_limites_municipais').style['mix-blend-mode'] = 'normal';

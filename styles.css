@@ -334,6 +334,16 @@
     z-index: 401;
 }
 
+#DataBar.placed {
+    right: 10px;
+    animation: undisplace 2s;
+}
+
+#DataBar.displaced {
+    right: 310px;
+    animation: displace 2s;
+}
+
 .barcontainer {
     padding: 10px 10px 0px 10px;
     margin: 5px 5px 0px 5px;
@@ -343,14 +353,76 @@
     border-style: groove;
 }
 
-#DataBar.placed {
-    right: 10px;
-    animation: undisplace 2s;
+.variavel {
+    height: 25px;
+    position: relative;
+    top: 0px;
+    left: 20px;
 }
 
-#DataBar.displaced {
-    right: 310px;
-    animation: displace 2s;
+.noUi-target {
+    position: relative;
+    width: 90%;
+    left: 20px;
+}
+
+.position_icon {
+    position: relative;
+    left: -2px;
+    width: 15px;
+    height: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+[id*='position_up']:hover, [id*='position_down']:hover {
+    background-image: url(./icons/seta_3.svg);
+    cursor: pointer;
+}
+
+[id*="position_up"] {
+    top: -40px;
+    background-image: url(./icons/seta_2.svg);
+    transform: rotate(-90deg);
+}
+
+[id*="position_down"] {
+    bottom: 20px;
+    background-image: url(./icons/seta_2.svg);
+    transform: rotate(90deg);
+}
+
+[id*="position_number"] {
+    position: relative;
+    bottom: 52px;
+    left: 3px;
+}
+
+.move-up {
+    animation: moveUp 1s;
+}
+
+.move-down {
+    animation: moveDown 1s;
+}
+
+@keyframes moveUp {
+    0% {
+        transform: translateY(0px);
+    }
+    100% {
+        transform: translateY(-70px);
+    }
+}
+
+@keyframes moveDown {
+    0% {
+        transform: translateY(0px);
+    }
+    100% {
+        transform: translateY(70px);
+    }
 }
 
 #tree {
