@@ -282,14 +282,15 @@
     font-size: 15px;
     color: #C00026;
     position: absolute;
-    bottom: -1px;
-    left: 7px;
+    bottom: 5px;
 }
 
 #opacidade {
     position: absolute;
     top: 10px;
     left: 10px;
+    justify-content: center;
+    display: flex;
 }
 
 #opacidade .ferramentas_img {
@@ -302,6 +303,26 @@
 
 #opacidade.clicked .ferramentas_img {
     background-image: url(/icons/opacidade_white.svg);
+}
+
+#legendas {
+    position: absolute;
+    top: 10px;
+    left: 100px;
+    justify-content: center;
+    display: flex;
+}
+
+#legendas .ferramentas_img {
+    background-image: url(/icons/legenda.svg);
+}
+
+#legendas:hover .ferramentas_img {
+    background-image: url(/icons/legenda_white.svg);
+}
+
+#legendas.clicked .ferramentas_img {
+    background-image: url(/icons/legenda_white.svg);
 }
 
 @keyframes displace {
@@ -342,6 +363,30 @@
 #DataBar.displaced {
     right: 310px;
     animation: displace 2s;
+}
+
+#Legenda {
+    background-color: #ffffff;
+    position: absolute;
+    top: 80px;
+    left: 10px;
+    cursor: default;
+    border: solid 5px #C00026;
+    border-radius: 10px;
+    z-index: 401;
+    overflow: hidden;
+}
+
+.ss-content {
+    overflow-x: hidden;
+}
+
+.legenda_titulo {
+    position: relative;
+    left: 3px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #404241;
 }
 
 .barcontainer {

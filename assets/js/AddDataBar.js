@@ -31,7 +31,6 @@ function posicao_camada(event, layerGroup, map) {
     var variavel = id.slice(indice+1);
     var tipo = id.slice(0, indice);
     var number = document.getElementById('position_number '+variavel);
-    console.log(number.innerText);
     if (tipo == 'position_down' && parseInt(number.innerText) > 1) {
         var variavel_2 = document.getElementsByClassName('barcontainer');
         var variavel_1 = variavel_2[variavel_2.length-parseInt(number.innerText)];
@@ -65,11 +64,10 @@ function posicao_camada(event, layerGroup, map) {
     }
 }
 
-export function AddDataBar(noUiSlider, backend_layers_group) {
-    var datavector = document.getElementsByClassName('jstree-anchor splus jstree-clicked') || [];
+export function AddDataBar(noUiSlider, backend_layers_group, datavector) {
     var listvector = document.getElementsByClassName('slider') || [];
     var listvectorids = [...listvector].map(element => element.id);
-    var datavectortexts = [...datavector].map(element => element.textContent) || [];
+    var datavectortexts = [...datavector].map(element => element.text) || [];
     for (var i = 0; i < datavectortexts.length; i++) {
         if ( !(listvectorids.includes(datavectortexts[i])) ) {
             var eixo = nome_eixo();
@@ -156,15 +154,14 @@ export function AddDataBar(noUiSlider, backend_layers_group) {
             deletar.remove();
             var elementos = document.querySelectorAll('[id*="position_number"]');
             var numero_elementos = elementos.length;
-            console.log(numero_elementos);
             elementos.forEach(elemento => {
                 elemento.innerText = numero_elementos;
                 numero_elementos = numero_elementos - 1;
             });
-            var selecionado = document.getElementsByClassName('botao_variavel clicked');
-            if (selecionado.length <= 0 || selecionado.length == undefined) {
-                document.getElementById('legenda').remove();
-            }
+            //var selecionado = document.getElementsByClassName('botao_variavel clicked');
+            //if (selecionado.length <= 0 || selecionado.length == undefined) {
+            //    document.getElementById('legenda').remove();
+            //}
         }
     }
     if (listvector.length <= 5){

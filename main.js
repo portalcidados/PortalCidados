@@ -915,7 +915,6 @@ function GraphBuilder(cards) {
                 circleMesh.geometry.dispose();
                 circleMesh.geometry = new THREE.CircleGeometry(raio, 32);
                 renderer.render(scene, camera);
-                console.log(raio);
                 requestAnimationFrame(animate);
             }
             animate();
@@ -1064,7 +1063,6 @@ projeto_buttons.forEach(button => {
             view: window
         });
         const info = document.getElementById('item_1');
-        console.log(info);
         info.dispatchEvent(event);
     });
 });
@@ -1155,15 +1153,14 @@ L.DomEvent.disableClickPropagation(databar);
 L.DomEvent.disableScrollPropagation(databar);
 SimpleScrollbar.initEl(document.getElementById("DataBar"));
 
-// Constrói o div DataBar e adiciona ao main_map //
-var positionbar = document.createElement('div');
-positionbar.id = 'PositionBar';
-positionbar.className = 'placed';
-positionbar.classList.add('no_show');
-main_map.appendChild(positionbar);
-L.DomEvent.disableClickPropagation(positionbar);
-L.DomEvent.disableScrollPropagation(positionbar);
-SimpleScrollbar.initEl(document.getElementById("PositionBar"));
+// Constrói o div Legenda e adciona ao main_map //
+var legenda = document.createElement('div');
+legenda.id = 'Legenda';
+legenda.className = 'no_show';
+main_map.appendChild(legenda);
+L.DomEvent.disableClickPropagation(legenda);
+L.DomEvent.disableScrollPropagation(legenda);
+SimpleScrollbar.initEl(document.getElementById("Legenda"));
 
 // Constrói o div logo e seus filhos e adiciona no main_map //
 const logo = document.createElement('div');
@@ -1247,11 +1244,14 @@ camadas_layer.appendChild(div_tree);
 TreeBuilder($);
 SimpleScrollbar.initEl(document.getElementById("camadas_layer"));
 var vetor_camadas = [];
+var vetor_camadas_text = [];
 $('#tree').on('changed.jstree', function () {
     var vetor_camadas_novo = getSelectedElementsTree();
-    vetor_camadas_novo = [...vetor_camadas_novo].map(element => element.id)
-    if (vetor_camadas_novo.length > vetor_camadas.length) {
-        var item = vetor_camadas_novo.filter(element => !vetor_camadas.includes(element))[0];
+    var vetor_camadas_novo_id = [...vetor_camadas_novo].map(element => element.id);
+    var vetor_camadas_novo_text = [...vetor_camadas_novo].map(element => element.text);
+    if (vetor_camadas_novo_id.length > vetor_camadas.length) {
+        var item = vetor_camadas_novo_id.filter(element => !vetor_camadas.includes(element))[0];
+        var item_text = vetor_camadas_novo_text.filter(element => !vetor_camadas_text.includes(element))[0];
         var wmsLayer = L.tileLayer.wms('https://geoserver.datascience.insper.edu.br/geoserver/ows?', {
             layers: item,
             format: 'image/png',
@@ -1261,28 +1261,64 @@ $('#tree').on('changed.jstree', function () {
         })
         backend_layers_group.addLayer(wmsLayer);
         map.addLayer(wmsLayer);
+        if (vetor_camadas.length == 0) {
+            legenda.classList.remove('no_show');
+            legendas.classList.add("clicked");
+        }
+        var legenda_titulo = document.createElement('div');
+        legenda_titulo.id = 'legenda_titulo:'+item;
+        legenda_titulo.className = 'legenda_titulo';
+        legenda_titulo.innerText = item_text;
+        legenda.firstChild.firstChild.appendChild(legenda_titulo);
+        var legenda_in = document.createElement('div');
+        legenda_in.id = 'legenda:'+item;
+        legenda_in.className = 'legenda_in';
+        legenda_in.innerHTML = "<img src='https://geoserver.datascience.insper.edu.br/geoserver/ows?service=WMS&version=1.3.0&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer="+item+"'/>";
+        legenda.firstChild.firstChild.appendChild(legenda_in);
+        ajustarAltura(legenda, 250);
         //var dados = fetchWFS(item);
         //console.log(dados);
     }
-    if ( vetor_camadas_novo.length < vetor_camadas.length ) {
-        var item = vetor_camadas.filter(element => !vetor_camadas_novo.includes(element))[0];
+    if ( vetor_camadas_novo_id.length < vetor_camadas.length ) {
+        var item = vetor_camadas.filter(element => !vetor_camadas_novo_id.includes(element))[0];
         removeLayerFromGroup(backend_layers_group, item);
+        if (vetor_camadas.length == 1) {
+            legenda.classList.add('no_show');
+            legendas.classList.remove("clicked");
+        }
     }
-    vetor_camadas = vetor_camadas_novo;
+    vetor_camadas = vetor_camadas_novo_id;
+    vetor_camadas_text = vetor_camadas_novo_text;
     if (vetor_camadas.length > 0 && [...opacidade.classList].includes('clicked')) {
         databar.classList.remove('no_show');
     } else {
         databar.classList.add('no_show');
     }
-    AddDataBar(noUiSlider, backend_layers_group);
+    AddDataBar(noUiSlider, backend_layers_group, vetor_camadas_novo);
 });
+function ajustarAltura(div, max) {
+    var pai = div.firstChild.firstChild;
+    var filhas = pai.getElementsByClassName("legenda_in");
+    var alturas = 0;
+    var larguras = 0;
+    for (var i = 0; i < filhas.length; i++) {
+        var altura = filhas[i].offsetHeight;
+        var largura = filhas[i].offsetWidth + 3;
+        alturas = alturas + altura + 19.5;
+        larguras = Math.max(larguras, largura);
+    }
+    div.style.height = Math.min(alturas, max) + "px";
+}
 function removeLayerFromGroup(group, item) {
+    document.getElementById('legenda:'+item).remove();
+    document.getElementById('legenda_titulo:'+item).remove();
     group.eachLayer(function(layer) {
         if (layer.options && layer.options.layerName == item) {
             map.removeLayer(layer);
             group.removeLayer(layer);
         }
     });
+    ajustarAltura(legenda, 250);
 }
 function getSelectedElementsTree() {
     var arvore = $('#tree').jstree(true).get_json('#', {flat:true});
@@ -1324,6 +1360,27 @@ var opacidade_texto = document.createElement('div');
 opacidade_texto.classList.add('ferramentas_texto');
 opacidade_texto.innerText = 'Opacidade';
 opacidade.appendChild(opacidade_texto);
+
+var legendas = document.createElement('div');
+legendas.id = 'legendas';
+legendas.classList.add('ferramentas_icone');
+ferramentas_layer.appendChild(legendas);
+legendas.addEventListener('click', () => {
+    if (legendas.classList.contains("clicked")) {
+        legendas.classList.remove("clicked");
+        legenda.classList.add('no_show');
+    } else if (!legendas.classList.contains("clicked")) {
+        legendas.classList.add("clicked");
+        legenda.classList.remove('no_show');
+    }
+});
+var legendas_img = document.createElement('div');
+legendas_img.classList.add('ferramentas_img');
+legendas.appendChild(legendas_img);
+var legendas_texto = document.createElement('div');
+legendas_texto.classList.add('ferramentas_texto');
+legendas_texto.innerText = 'Legendas';
+legendas.appendChild(legendas_texto);
 
 
 
@@ -1629,7 +1686,7 @@ var osmGeocoder = new L.Control.Geocoder({
 
 // Cria o ícone de localização para o geocoder //
 var customIcon = L.icon({
-    iconUrl: '/icons/localizar_mapa.svg', // URL do seu ícone personalizado
+    iconUrl: './icons/localizar_mapa.svg', // URL do seu ícone personalizado
     iconSize: [38, 38], // Tamanho do ícone
     iconAnchor: [19, 38], // Ponto de ancoragem do ícone (onde ele será posicionado)
     popupAnchor: [0, -38] // Ponto de ancoragem do popup (se você exibir um popup)
