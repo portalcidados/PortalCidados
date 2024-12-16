@@ -1236,66 +1236,181 @@ camadas_layer.id = 'camadas_layer';
 camadas_layer.classList.add('main_tools_layers', 'roll');
 main_tools.appendChild(camadas_layer);
 
+// Constrói o droplist de cidades
+const dropdown = document.createElement('div');
+dropdown.classList.add('dropdown');
+const CityButton = document.createElement('div');
+CityButton.id = 'SelectedOption';
+CityButton.className = 'dropbtn';
+CityButton.innerHTML = 'São Paulo';
+dropdown.appendChild(CityButton);
+const dropdownContent = document.createElement('ul');
+dropdownContent.id = 'Dropdown';
+dropdownContent.classList.add('dropdown-content', 'no_show');
+const cidades = [
+  { id: 'sp', camada: 'portal_dados:municipios_sp', nome: 'São Paulo', coord: { lat: -23.5470, long: -46.6339}, nordeste: { lat: -23.0, long: -44.2}, sudoeste: { lat: -23.0, long: -44.2} },
+  { id: 'rj', camada: 'portal_dados:municipios_rj', nome: 'Rio de Janeiro', coord: {lat: -22.9275, long: -43.4143}, nordeste: { lat: -20.6635, long: -40.9848}, sudoeste: { lat: -23.3866, long: -44.8497} },
+  { id: 'noi', camada: 'portal_dados:municipios_rj', nome: 'Niterói', coord: { lat: -22.9084, long: -43.0543}, nordeste: { lat: -20.6635, long: -40.9848}, sudoeste: { lat: -23.3866, long: -44.8497} }
+];
+cidades.forEach(cidade => {
+  const li = document.createElement('li');
+  li.id = cidade.id;
+  li.classList.add('DropOption');
+  li.innerHTML = cidade.nome;
+  dropdownContent.appendChild(li);
+});
+dropdown.appendChild(dropdownContent);
+document.body.appendChild(dropdown);
+CityButton.addEventListener('click', CityOptions);
+function CityOptions() {
+    var lista = document.getElementById("Dropdown").classList;
+    if (lista.contains('no_show')) {
+        lista.remove("no_show");
+    } else {
+        lista.add("no_show");
+    }
+}
+async function changeCity(event) {
+    var current_city = event.target.innerText;
+    document.getElementById('SelectedOption').innerText = current_city;
+    await new Promise(resolve => setTimeout(resolve, 0));
+    cidades.forEach(cidade => {
+        if (cidade.nome == current_city) {
+            var camadas = getSelectedElementsTree();
+            if (camadas.length > 0 ){
+                camadas.forEach(camada => {
+                    removeLayerFromGroup(backend_layers_group, camada.id);
+                    AddDataBar(noUiSlider, backend_layers_group, []);
+                });
+            }
+            vetor_camadas = [];
+            vetor_camadas_text = [];
+            $('#tree').jstree('destroy');
+            bounds_group.removeLayer(layer_limites_municipais);
+            map.removeLayer(layer_limites_municipais);
+            json_limites_municipais = fetchWFS(cidade.camada.toString());
+            layer_limites_municipais = new L.geoJson(json_limites_municipais, {
+                attribution: '',
+                interactive: false,
+                dataVar: 'json_limites_municipais',
+                layerName: 'layer_limites_municipais',
+                pane: 'pane_limites_municipais',
+                style: style_limites_municipais,
+                renderer: L.canvas(),
+                smoothFactor: 0,
+            })
+            bounds_group.addLayer(layer_limites_municipais);
+            map.addLayer(layer_limites_municipais);
+            //sudoeste = L.latLng(-36.312668870703455, -75.33239427789226);
+            //nordeste = L.latLng(7.103916933041202, -32.178097913980785);
+            //bounds = L.latLngBounds(sudoeste, nordeste)
+            //sudoeste = L.latLng(cidade.sudoeste.lat, cidade.sudoeste.long);
+            //nordeste = L.latLng(cidade.nordeste.lat, cidade.nordeste.long);
+            map.flyTo([cidade.coord.lat, cidade.coord.long], 11);
+            //bounds = L.latLngBounds(sudoeste, nordeste);
+            label();
+            TreeBuilder($, cidade.id);
+            MakeTreeOn();
+        }
+    })
+}
+var gif = document.createElement('div');
+gif.id = 'loading_gif';
+gif.classList.add('no_show');
+document.getElementById('app').appendChild(gif);
+window.onclick = async function(event) {
+    if(event.target.matches('.DropOption')) {
+        gif.classList.toggle('no_show');
+        setTimeout(() => {
+        }, 1000);
+        await changeCity(event);
+        var botoes = ferramentas_layer.querySelectorAll('.ferramentas_icone');
+        botoes.forEach(botao => {
+            if(botao.classList.contains('clicked')){
+                botao.click();
+            };     
+        });
+        gif.classList.toggle('no_show');
+        
+    }
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (!openDropdown.classList.contains('no_show')) {
+                openDropdown.classList.add('no_show');
+            }
+        }
+    }
+}
+
 // Constrói a árvore de camadas e adiciona na camada_layer //
 var div_tree = document.createElement("div");
 div_tree.id = "tree";
 div_tree.className = "arvore";
 camadas_layer.appendChild(div_tree);
-TreeBuilder($);
+TreeBuilder($, 'sp');
 SimpleScrollbar.initEl(document.getElementById("camadas_layer"));
+camadas_layer.insertBefore(dropdown, camadas_layer.firstChild);
 var vetor_camadas = [];
 var vetor_camadas_text = [];
-$('#tree').on('changed.jstree', function () {
-    var vetor_camadas_novo = getSelectedElementsTree();
-    var vetor_camadas_novo_id = [...vetor_camadas_novo].map(element => element.id);
-    var vetor_camadas_novo_text = [...vetor_camadas_novo].map(element => element.text);
-    if (vetor_camadas_novo_id.length > vetor_camadas.length) {
-        var item = vetor_camadas_novo_id.filter(element => !vetor_camadas.includes(element))[0];
-        var item_text = vetor_camadas_novo_text.filter(element => !vetor_camadas_text.includes(element))[0];
-        var wmsLayer = L.tileLayer.wms('https://geoserver.datascience.insper.edu.br/geoserver/ows?', {
-            layers: item,
-            format: 'image/png',
-            transparent: true,
-            pane: 'pane_backend',
-            layerName: item,
-        })
-        backend_layers_group.addLayer(wmsLayer);
-        map.addLayer(wmsLayer);
-        if (vetor_camadas.length == 0) {
-            legenda.classList.remove('no_show');
-            legendas.classList.add("clicked");
+MakeTreeOn();
+function MakeTreeOn() {
+    $('#tree').on('changed.jstree', function () {
+        var vetor_camadas_novo = getSelectedElementsTree();
+        var vetor_camadas_novo_id = [...vetor_camadas_novo].map(element => element.id);
+        var vetor_camadas_novo_text = [...vetor_camadas_novo].map(element => element.text);
+        if (vetor_camadas_novo_id.length > vetor_camadas.length) {
+            var item = vetor_camadas_novo_id.filter(element => !vetor_camadas.includes(element))[0];
+            var item_text = vetor_camadas_novo_text.filter(element => !vetor_camadas_text.includes(element))[0];
+            var wmsLayer = L.tileLayer.wms('https://geoserver.datascience.insper.edu.br/geoserver/ows?', {
+                layers: item,
+                format: 'image/png',
+                transparent: true,
+                pane: 'pane_backend',
+                layerName: item,
+            })
+            backend_layers_group.addLayer(wmsLayer);
+            map.addLayer(wmsLayer);
+            if (vetor_camadas.length == 0) {
+                legenda.classList.remove('no_show');
+                legendas.classList.add("clicked");
+            }
+            var legenda_titulo = document.createElement('div');
+            legenda_titulo.id = 'legenda_titulo:'+item;
+            legenda_titulo.className = 'legenda_titulo';
+            legenda_titulo.innerText = item_text;
+            legenda.firstChild.firstChild.appendChild(legenda_titulo);
+            var legenda_in = document.createElement('div');
+            legenda_in.id = 'legenda:'+item;
+            legenda_in.className = 'legenda_in';
+            legenda_in.innerHTML = "<img src='https://geoserver.datascience.insper.edu.br/geoserver/ows?service=WMS&version=1.3.0&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer="+item+"'/>";
+            legenda.firstChild.firstChild.appendChild(legenda_in);
+            setTimeout(() => {
+                ajustarAltura(legenda, 250)
+            }, 500);
+            //var dados = fetchWFS(item);
+            //console.log(dados);
         }
-        var legenda_titulo = document.createElement('div');
-        legenda_titulo.id = 'legenda_titulo:'+item;
-        legenda_titulo.className = 'legenda_titulo';
-        legenda_titulo.innerText = item_text;
-        legenda.firstChild.firstChild.appendChild(legenda_titulo);
-        var legenda_in = document.createElement('div');
-        legenda_in.id = 'legenda:'+item;
-        legenda_in.className = 'legenda_in';
-        legenda_in.innerHTML = "<img src='https://geoserver.datascience.insper.edu.br/geoserver/ows?service=WMS&version=1.3.0&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer="+item+"'/>";
-        legenda.firstChild.firstChild.appendChild(legenda_in);
-        ajustarAltura(legenda, 250);
-        //var dados = fetchWFS(item);
-        //console.log(dados);
-    }
-    if ( vetor_camadas_novo_id.length < vetor_camadas.length ) {
-        var item = vetor_camadas.filter(element => !vetor_camadas_novo_id.includes(element))[0];
-        removeLayerFromGroup(backend_layers_group, item);
-        if (vetor_camadas.length == 1) {
-            legenda.classList.add('no_show');
-            legendas.classList.remove("clicked");
+        if ( vetor_camadas_novo_id.length < vetor_camadas.length ) {
+            var item = vetor_camadas.filter(element => !vetor_camadas_novo_id.includes(element))[0];
+            removeLayerFromGroup(backend_layers_group, item);
+            if (vetor_camadas.length == 1) {
+                legenda.classList.add('no_show');
+                legendas.classList.remove("clicked");
+            }
         }
-    }
-    vetor_camadas = vetor_camadas_novo_id;
-    vetor_camadas_text = vetor_camadas_novo_text;
-    if (vetor_camadas.length > 0 && [...opacidade.classList].includes('clicked')) {
-        databar.classList.remove('no_show');
-    } else {
-        databar.classList.add('no_show');
-    }
-    AddDataBar(noUiSlider, backend_layers_group, vetor_camadas_novo);
-});
+        vetor_camadas = vetor_camadas_novo_id;
+        vetor_camadas_text = vetor_camadas_novo_text;
+        if (vetor_camadas.length > 0 && [...opacidade.classList].includes('clicked')) {
+            databar.classList.remove('no_show');
+        } else {
+            databar.classList.add('no_show');
+        }
+        AddDataBar(noUiSlider, backend_layers_group, vetor_camadas_novo);
+    });
+}
 function ajustarAltura(div, max) {
     var pai = div.firstChild.firstChild;
     var filhas = pai.getElementsByClassName("legenda_in");
@@ -1303,8 +1418,8 @@ function ajustarAltura(div, max) {
     var larguras = 0;
     for (var i = 0; i < filhas.length; i++) {
         var altura = filhas[i].offsetHeight;
-        var largura = filhas[i].offsetWidth + 3;
-        alturas = alturas + altura + 19.5;
+        var largura = filhas[i].offsetWidth;
+        alturas = alturas + altura + 19.5 + 15;
         larguras = Math.max(larguras, largura);
     }
     div.style.height = Math.min(alturas, max) + "px";
@@ -1348,9 +1463,13 @@ opacidade.addEventListener('click', () => {
         databar.classList.add('no_show');
         logo_insper.classList.remove('to_left');
     } else if (!opacidade.classList.contains("clicked")) {
-        opacidade.classList.add("clicked");
-        databar.classList.remove('no_show');
-        logo_insper.classList.add('to_left');
+        if ( vetor_camadas.length > 0 ) {
+            opacidade.classList.add("clicked");
+            databar.classList.remove('no_show');
+            logo_insper.classList.add('to_left');
+        } else {
+            alert("Não há camadas selecionadas!");
+        }
     }
 });
 var opacidade_img = document.createElement('div');
@@ -1370,8 +1489,12 @@ legendas.addEventListener('click', () => {
         legendas.classList.remove("clicked");
         legenda.classList.add('no_show');
     } else if (!legendas.classList.contains("clicked")) {
-        legendas.classList.add("clicked");
-        legenda.classList.remove('no_show');
+        if ( vetor_camadas.length >0 ) {
+            legendas.classList.add("clicked");
+            legenda.classList.remove('no_show');
+        } else {
+            alert("Não há camadas selecionadas!");
+        }
     }
 });
 var legendas_img = document.createElement('div');
@@ -1714,10 +1837,10 @@ map.on("layeradd", function(){
 map.on("layerremove", function(){
 });
 map.on("drag", function(){
-    map.panInsideBounds(bounds, { animate: false }); 
+    //map.panInsideBounds(bounds, { animate: false }); 
 });
 map.on("move", function(){
-    map.panInsideBounds(bounds, { animate: false });
+    //map.panInsideBounds(bounds, { animate: false });
 });
 
 label();
