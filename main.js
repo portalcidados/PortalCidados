@@ -1273,14 +1273,14 @@ function CityOptions() {
 async function changeCity(event) {
     var current_city = event.target.innerText;
     document.getElementById('SelectedOption').innerText = current_city;
-    await new Promise(resolve => setTimeout(resolve, 0));
+    await new Promise(resolve => setTimeout(resolve, 1500));
     cidades.forEach(cidade => {
         if (cidade.nome == current_city) {
             var camadas = getSelectedElementsTree();
             if (camadas.length > 0 ){
                 camadas.forEach(camada => {
                     removeLayerFromGroup(backend_layers_group, camada.id);
-                    AddDataBar(noUiSlider, backend_layers_group, []);
+                    AddDataBar(noUiSlider, backend_layers_group, [], $(div_tree));
                 });
             }
             vetor_camadas = [];
@@ -1321,8 +1321,6 @@ document.getElementById('app').appendChild(gif);
 window.onclick = async function(event) {
     if(event.target.matches('.DropOption')) {
         gif.classList.toggle('no_show');
-        setTimeout(() => {
-        }, 1000);
         await changeCity(event);
         var botoes = ferramentas_layer.querySelectorAll('.ferramentas_icone');
         botoes.forEach(botao => {
@@ -1405,10 +1403,13 @@ function MakeTreeOn() {
         vetor_camadas_text = vetor_camadas_novo_text;
         if (vetor_camadas.length > 0 && [...opacidade.classList].includes('clicked')) {
             databar.classList.remove('no_show');
-        } else {
+        } else if (vetor_camadas.length == 0 && [...opacidade.classList].includes('clicked')) {
+            opacidade.click();
+        } 
+        else {
             databar.classList.add('no_show');
         }
-        AddDataBar(noUiSlider, backend_layers_group, vetor_camadas_novo);
+        AddDataBar(noUiSlider, backend_layers_group, vetor_camadas_novo, $(div_tree));
     });
 }
 function ajustarAltura(div, max) {
@@ -1436,7 +1437,7 @@ function removeLayerFromGroup(group, item) {
     ajustarAltura(legenda, 250);
 }
 function getSelectedElementsTree() {
-    var arvore = $('#tree').jstree(true).get_json('#', {flat:true});
+    var arvore = $(div_tree).jstree(true).get_json('#', {flat:true});
     var tamanho = arvore.length;
     var vetor = [];
     for (var i = 0; i < tamanho; i++) {

@@ -1,12 +1,15 @@
+import 'jstree';
+import $, { data } from 'jquery';
 function nome_eixo(){
     var eixo = event.target.innerText || event.target.parentNode.innerText;
     eixo = eixo.replaceAll(' ', '_');
     return(eixo);
 }
-function fecharBarcontainer() {
-    var idvariavel = event.target.className;
-    var variavel = document.getElementById(idvariavel);
-    variavel.click();
+function fecharBarcontainer(div_tree) {
+    var idvariavel = event.target.id;
+    var indice = idvariavel.indexOf(":");
+    idvariavel = idvariavel.slice(indice+1);
+    div_tree.jstree('deselect_node', '#'+idvariavel);
 }
 // Function to update layer opacity
 function updateOpacity(value, backend_layers_group, idvariavel) {
@@ -64,7 +67,7 @@ function posicao_camada(event, layerGroup, map) {
     }
 }
 
-export function AddDataBar(noUiSlider, backend_layers_group, datavector) {
+export function AddDataBar(noUiSlider, backend_layers_group, datavector, div_tree) {
     var listvector = document.getElementsByClassName('slider') || [];
     var listvectorids = [...listvector].map(element => element.id);
     var datavectortexts = [...datavector].map(element => element.text) || [];
@@ -92,13 +95,15 @@ export function AddDataBar(noUiSlider, backend_layers_group, datavector) {
             document.getElementById("barcontainer "+datavectortexts[i]).appendChild(peso_indicador);
 
             var fechar = document.createElement('div');
-            fechar.id = "fechar_barcontainer";
-            fechar.className = idvariavel;
+            fechar.id = 'fechar:'+idvariavel;
+            fechar.className = "fechar_barcontainer";
             document.getElementById("barcontainer "+datavectortexts[i]).appendChild(fechar);
             fechar.onclick = function() {
                 sel_indicador.noUiSlider.reset();
             };
-            fechar.addEventListener('click', fecharBarcontainer);
+            fechar.addEventListener('click', () => {
+                fecharBarcontainer(div_tree);
+            });
 
             var div_indicador = document.createElement("div");
             div_indicador.id = datavectortexts[i];
