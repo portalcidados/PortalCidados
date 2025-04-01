@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="512px" height="512px" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g fill="#C00026" stroke="none">
+<g fill="#E50505" stroke="none">
 <path d="M 237.5,23.5 C 309.12,19.3903 363.953,47.3903 402,107.5C 420.149,140.578 427.149,175.912 423,213.5C 418.304,254.921 405.971,293.921 386,330.5C 353.489,389.257 311.989,441.09 261.5,486C 257.5,488 253.5,488 249.5,486C 194.3,437.161 150.133,379.994 117,314.5C 101.66,282.479 91.9937,248.812 88,213.5C 82.1969,140.275 110.03,84.1082 171.5,45C 192.22,33.4955 214.22,26.3289 237.5,23.5 Z M 254.5,95.5 C 304.092,99.0368 335.592,124.703 349,172.5C 355.415,221.176 336.915,256.676 293.5,279C 250.511,294.795 213.344,285.961 182,252.5C 160.041,224.083 154.708,192.75 166,158.5C 182.911,119.748 212.411,98.7478 254.5,95.5 Z"/>
 </g>
 </svg>

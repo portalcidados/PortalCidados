@@ -116,7 +116,7 @@ a:hover, #header.nav-solid nav a:hover {
 
 
 body {
-    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-family: 'Inter, Open Sans, sans-serif, Arial, Helvetica';
     font-size:15px;
     font-weight:normal;
     color:#414042;
@@ -144,7 +144,7 @@ body {
 /* Banner Typography */
 
 #banner h1 {
-    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-family: 'Inter, Open Sans, sans-serif, Arial, Helvetica';
     font-size:62px;
     line-height:60px;
     font-weight:800;
@@ -152,7 +152,7 @@ body {
 }
 
 #banner h2 {
-    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-family: 'Inter, Open Sans, sans-serif, Arial, Helvetica';
     font-size:18px;
     font-weight:300;
     color:#414042;
@@ -162,14 +162,14 @@ body {
 /* Section Title and Subtitle */
 
 .section-title {
-    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-family: 'Inter, Open Sans, sans-serif, Arial, Helvetica';
     font-size: 34px; 
     font-weight:700;
     color:#414042;
 }
 
 .section-subtitle {
-    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-family: 'Inter, Open Sans, sans-serif, Arial, Helvetica';
     font-size: 16px;
     font-weight:300;
     color:#9c9c9c;
@@ -178,7 +178,7 @@ body {
 /* Testimonial */
 
 .testimonial q {
-    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-family: 'Inter, Open Sans, sans-serif, Arial, Helvetica';
     font-size: 17px; 
     font-weight:300;
 }
@@ -191,42 +191,42 @@ body {
 /* Standard Headings h1-h6 */
 
 h1 {
-    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-family: 'Inter, Open Sans, sans-serif, Arial, Helvetica';
     font-size: 40px; 
     font-weight:300;
     color:#414042;
 }
 
 h2 {
-    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-family: 'Inter, Open Sans, sans-serif, Arial, Helvetica';
     font-size: 34px; 
     font-weight:300;
     color:#414042;
 }
 
 h3 {
-    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-family: 'Inter, Open Sans, sans-serif, Arial, Helvetica';
     font-size: 30px; 
     font-weight:700;
     color:#414042;
 }
 
 h4 {
-    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-family: 'Inter, Open Sans, sans-serif, Arial, Helvetica';
     font-size: 18px; 
     font-weight:400;
     color:#414042;
 }
 
 h5 {
-    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-family: 'Inter, Open Sans, sans-serif, Arial, Helvetica';
     font-size: 16px; 
     font-weight:400;
     color:#414042;
 }
 
 h6 {
-    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-family: 'Inter, Open Sans, sans-serif, Arial, Helvetica';
     font-size: 14px; 
     font-weight:400;
     color:#414042;
@@ -243,7 +243,7 @@ h6 {
 /* Button Text */
 
 .button, input[type="submit"]  {
-    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-family: 'Inter, Open Sans, sans-serif, Arial, Helvetica';
     font-size:14px;
     font-weight:bold;
     color:#414042;
@@ -271,7 +271,7 @@ h6 {
 /* Button Text */
 
 #banner .button {
-    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-family: 'Inter, Open Sans, sans-serif, Arial, Helvetica';
     font-size:16px;
     color:#414042;
 }
@@ -297,7 +297,7 @@ h6 {
 /*------------------------------------------------------------------------------------------*/
 
 #landing-footer, #landing-footer p, #landing-footer a {
-    font-family: 'Open Sans', sans-serif, Arial, Helvetica;
+    font-family: 'Inter, Open Sans, sans-serif, Arial, Helvetica';
     font-size:12px;
     font-weight:normal;
     color:#999;
@@ -318,13 +318,13 @@ h6 {
 }
 
 #logo {
-    font-family: 'Roboto Condensed';
+    font-family: 'Inter';
 }
 
 .text {
     position: absolute;
     font-size: 2rem;
-    font-weight: 700; /* Usando peso 700 (negrito) da fonte Roboto Condensed */
+    font-weight: 700; /* Usando peso 700 (negrito) da fonte Inter */
     transition: opacity 1s ease, transform 1s ease;
     color: #C00026;
 }
@@ -332,7 +332,7 @@ h6 {
 .text2 {
     position: absolute;
     font-size: 2rem;
-    font-weight: 700; /* Usando peso 700 (negrito) da fonte Roboto Condensed */
+    font-weight: 700; /* Usando peso 700 (negrito) da fonte Inter */
     color: #333;
     transition: opacity 1s ease, transform 1s ease;
 }
@@ -614,7 +614,7 @@ li.story_item.story_container_2 a div.story_card_content .story_card_description
     width: 100%;
     color: #414042;
     font-size: 15px;
-    font-family: 'Roboto';
+    font-family: 'Inter';
     text-align: justify;
 }
 
